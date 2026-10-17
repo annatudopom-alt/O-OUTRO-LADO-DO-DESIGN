@@ -1,1 +1,1734 @@
-# ENTRE-FORMAS
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Site interativo para aprender design, usabilidade (UX/UI) e teoria das cores, com Color Lab, quiz, checklist e um robô guia.">
+  <meta name="theme-color" content="#7c3aed">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Design &amp; Usabilidade">
+  <meta property="og:description" content="Aprenda design, UX e teoria das cores de forma interativa.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Ctext y=%27.9em%27 font-size=%2790%27%3E%F0%9F%8E%A8%3C/text%3E%3C/svg%3E">
+  <script>try{var t=localStorage.getItem("design-theme");if(!t&&window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches)t="dark";if(t)document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Poppins:wght@300;400;500;600;700&display=swap">
+  <title>Design &amp; Usabilidade — aprenda design, UX e teoria das cores</title>
+  <style>
+
+:root{
+  --bg:#faf9ff;--surface:#fff;--tint:#f1edfa;--text:#181321;--muted:#706978;--purple:#7c3aed;--purple2:#a855f7;--border:rgba(124,58,237,.14);--shadow:0 20px 60px rgba(60,35,100,.11);
+  --live-font-size: 16px;
+  --live-font-weight: 400;
+  --live-letter-spacing: 0px;
+}
+[data-theme=dark]{--bg:#0c0912;--surface:#15101d;--tint:#21172b;--text:#f7f2ff;--muted:#aaa1b7;--purple:#a855f7;--purple2:#c084fc;--border:rgba(192,132,252,.18);--shadow:0 20px 60px rgba(0,0,0,.35)}
+*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth;scroll-padding-top:85px}body{font-family:Poppins,Arial,sans-serif;font-size:var(--live-font-size);font-weight:var(--live-font-weight);letter-spacing:var(--live-letter-spacing);background:var(--bg);color:var(--text);line-height:1.65;transition:.3s}a{text-decoration:none;color:inherit}button,input{font:inherit}
+.header{height:78px;position:sticky;top:0;z-index:20;display:flex;align-items:center;justify-content:space-between;padding:0 6%;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(18px);border-bottom:1px solid var(--border)}
+.logo{display:flex;flex-direction:column;align-items:center;font:400 29px/18px "DM Serif Display",serif}.crown{color:var(--purple);font:25px/20px Arial}.header nav{display:flex;gap:5px}.header nav a{font-size:12px;color:var(--muted);padding:9px 11px;border-radius:9px;transition:.2s}.header nav a:hover{background:var(--tint);color:var(--purple)}.header-actions{display:flex;gap:8px}.icon-btn,.menu-btn{display:inline-grid;place-items:center;width:40px;height:40px;border:1px solid var(--border);background:var(--surface);color:var(--text);border-radius:50%;cursor:pointer}.menu-btn{display:none;border-radius:10px;font-size:20px}
+.section{width:min(1120px,88%);margin:auto;padding:105px 0}.hero{min-height:calc(100vh - 78px);display:grid;grid-template-columns:1.05fr .95fr;align-items:center;gap:45px;padding-top:55px}.eyebrow{display:block;color:var(--purple);font-size:12px;font-weight:700;letter-spacing:2px;margin-bottom:15px}.hero h1,.page h1{font:400 clamp(50px,6vw,78px)/1.04 "DM Serif Display",serif;letter-spacing:-2px}.gradient{background:linear-gradient(100deg,var(--purple),var(--purple2),#ec4899);-webkit-background-clip:text;background-clip:text;color:transparent}.hero p,.heading>p{color:var(--muted);max-width:680px;margin:22px 0;font-size:16px}.buttons{display:flex;gap:10px;flex-wrap:wrap}.btn{border:0;border-radius:12px;padding:13px 19px;font-weight:600;cursor:pointer;transition:.25s}.btn.primary{background:var(--purple);color:white;box-shadow:0 12px 30px rgba(124,58,237,.25)}.btn.primary:hover{transform:translateY(-3px)}.btn.secondary{background:var(--surface);border:1px solid var(--border);color:var(--text)}.btn.secondary:hover{color:var(--purple);border-color:var(--purple)}.stats{display:flex;gap:28px;margin-top:40px}.stats div{display:flex;gap:7px;align-items:baseline}.stats b{color:var(--purple);font-size:12px}.stats span{font-size:12px;color:var(--muted)}
+.hero-art{height:500px;position:relative;display:grid;place-items:center}.design-letter{width:255px;height:255px;border-radius:40% 60% 55% 45%;display:grid;place-items:center;background:linear-gradient(135deg,var(--purple),#c026d3);color:#fff;font:150px "DM Serif Display";transform:rotate(-8deg);box-shadow:0 35px 80px rgba(124,58,237,.35);animation:float 5s ease-in-out infinite}.orb{position:absolute;border:1px solid var(--border);border-radius:50%;width:390px;height:390px}.orb2{width:475px;height:475px;border-style:dashed}.floating{position:absolute;background:color-mix(in srgb,var(--surface) 92%,transparent);backdrop-filter:blur(12px);border:1px solid var(--border);padding:14px 17px;border-radius:15px;box-shadow:var(--shadow);font-size:12px}.floating b,.floating small{display:block}.floating small{color:var(--muted);font-size:12px;margin-top:2px}.one{right:0;top:50px}.two{left:0;bottom:55px}
+.heading{max-width:760px;margin-bottom:45px}.heading h2{font-size:clamp(32px,4vw,52px);line-height:1.1;letter-spacing:-1px}.heading.smaller{margin-top:100px;margin-bottom:30px}.cards{display:grid;gap:16px}.cards.three{grid-template-columns:repeat(3,1fr)}.card{background:var(--surface);border:1px solid var(--border);border-radius:22px;padding:29px;box-shadow:0 8px 30px rgba(50,30,90,.035);transition:.3s;transform-style:preserve-3d;perspective:1000px}.card:hover{transform:translateY(-7px);box-shadow:var(--shadow);border-color:rgba(124,58,237,.3)}.icon{width:44px;height:44px;display:grid;place-items:center;background:var(--tint);color:var(--purple);border-radius:12px;margin-bottom:23px}.card p{font-size:13px;color:var(--muted);margin-top:8px}.specialty>span{font-size:28px}.specialty h3{margin-top:20px}.more{border:0;background:none;color:var(--purple);font-weight:600;margin-top:20px;cursor:pointer}
+.tinted{width:100%;max-width:none;background:var(--tint);padding-left:6%;padding-right:6%}.career-tabs{display:flex;gap:8px;border-bottom:1px solid var(--border);padding-bottom:12px}.career{border:0;background:none;color:var(--muted);padding:11px 23px;border-radius:10px;font-weight:600;cursor:pointer}.career.active{background:var(--purple);color:#fff}.career-box{background:var(--surface);border:1px solid var(--border);border-radius:25px;padding:45px;margin-top:20px;box-shadow:var(--shadow)}.level{position:relative}.hidden{display:none!important}.level-no{position:absolute;right:0;top:-15px;font:65px "DM Serif Display";color:var(--purple);opacity:.2}.level h2{font:400 45px "DM Serif Display"}.level>b{display:block;color:var(--purple);margin:8px 0 32px}.level-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px}.level-grid h3{font-size:14px}.level-grid p{color:var(--muted);font-size:13px;margin-top:8px}.salary{margin-top:40px;padding:45px;border-radius:25px;background:linear-gradient(135deg,var(--purple),#c026d3);color:#fff;display:flex;align-items:center;justify-content:space-between;gap:30px}.salary .eyebrow{color:#eadbff}.salary p{max-width:650px;color:#eadbff;margin-top:10px;font-size:13px}.salary h2{font-size:40px}.salary-card{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);border-radius:18px;padding:25px;text-align:center;min-width:190px}.salary-card strong{display:block;font:50px "DM Serif Display"}.salary-card span,.salary-card small{display:block;font-size:12px}
+.color-pickers{display:flex;justify-content:center;align-items:center;gap:20px}.picker{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:22px;width:210px;text-align:center}.picker label{display:block;color:var(--muted);font-size:12px;letter-spacing:1px;margin-bottom:12px}.picker input{width:100%;height:105px;border:0;background:none;cursor:pointer}.picker b{font-size:12px}.plus{font-size:32px;color:var(--purple)}.center{display:flex;margin:25px auto}.result{display:grid;grid-template-columns:1fr 1fr;background:var(--surface);border:1px solid var(--border);border-radius:25px;overflow:hidden;box-shadow:var(--shadow);min-height:300px}.result>#resultColor{background:#bb8285}.result-info{padding:42px}.result-info h2{font:400 43px "DM Serif Display"}.result-info p{color:var(--muted);font-size:13px;margin:10px 0}.tags{display:flex;gap:6px;flex-wrap:wrap}.tags span{background:var(--tint);color:var(--purple);padding:5px 9px;border-radius:20px;font-size:12px}.copy{border:1px solid var(--border);background:var(--tint);color:var(--text);border-radius:9px;padding:9px 12px;margin-top:20px;font-size:12px;cursor:pointer}.copy b{color:var(--purple)}.meaning-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.meaning-grid article{background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:20px}.meaning-grid i{display:block;height:60px;border-radius:11px;margin-bottom:17px}.meaning-grid p{color:var(--muted);font-size:12px;margin-top:5px}
+.theory{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}.theory h2{font-size:35px}.theory p{color:var(--muted);font-size:13px;margin:12px 0}.harmony-buttons{display:flex;flex-wrap:wrap;gap:7px;margin-top:23px}.harmony-buttons button{border:1px solid var(--border);background:var(--surface);color:var(--muted);padding:8px 11px;border-radius:9px;font-size:12px;cursor:pointer}.harmony-buttons button.active{background:var(--purple);color:#fff}.wheel{width:350px;height:350px;border-radius:50%;margin:auto;background:conic-gradient(#ef4444,#f59e0b,#eab308,#22c55e,#06b6d4,#3b82f6,#6366f1,#8b5cf6,#ec4899,#ef4444);display:grid;place-items:center;box-shadow:0 25px 60px rgba(124,58,237,.18);position:relative}.wheel:after{content:"";position:absolute;width:190px;height:190px;border-radius:50%;background:var(--bg)}.wheel-center{z-index:1;font-size:12px;font-weight:700;letter-spacing:2px}.palette{display:flex;height:110px;border-radius:18px;overflow:hidden;margin-top:60px}.palette span{flex:1}.contrast{display:grid;grid-template-columns:1fr 1fr;margin-top:50px;border-radius:18px;overflow:hidden}.contrast>div{padding:40px;font-size:25px;font-weight:700}.contrast small{display:block;font-size:12px;font-weight:400;margin-top:7px}.good{background:#181321;color:#fff}.bad{background:#d9cdeb;color:#c4b5d7}
+.learning{display:grid;grid-template-columns:1.5fr .7fr;gap:30px}.checklist{display:grid;gap:8px}.checklist label{display:flex;gap:13px;background:var(--surface);border:1px solid var(--border);padding:17px 20px;border-radius:14px;cursor:pointer}.checklist input{accent-color:var(--purple);margin-top:5px}.checklist b,.checklist small{display:block}.checklist small{color:var(--muted);font-size:12px;margin-top:3px}.checklist label:has(input:checked){background:var(--tint)}.progress-card{background:linear-gradient(135deg,var(--purple),#c026d3);color:#fff;padding:28px;border-radius:21px;position:sticky;top:100px;height:max-content}.progress-card .eyebrow{color:#eadbff}.progress-card strong{font:60px "DM Serif Display";display:block}.bar{height:8px;background:rgba(255,255,255,.25);border-radius:10px;overflow:hidden;margin:13px 0}.bar i{display:block;width:0;height:100%;background:white;transition:.4s}.progress-card p{font-size:12px;color:#f0e6ff}
+.quiz-top{display:flex;align-items:center;gap:15px;color:var(--muted);font-size:12px}.qbar{height:6px;flex:1;background:var(--surface);border-radius:20px;overflow:hidden}.qbar i{display:block;width:20%;height:100%;background:var(--purple);transition:.4s}.quiz{max-width:850px;margin:30px auto 0;background:var(--surface);border:1px solid var(--border);border-radius:25px;padding:45px;box-shadow:var(--shadow)}.quiz h2{font-size:32px;margin-bottom:25px}.answers{display:grid;gap:9px}.answer{border:1px solid var(--border);background:var(--surface);color:var(--text);padding:15px;border-radius:12px;text-align:left;cursor:pointer;transition:.2s}.answer:hover{border-color:var(--purple);transform:translateX(3px)}.answer.correct{border-color:#22c55e;background:rgba(34,197,94,.1)}.answer.wrong{border-color:#ef4444;background:rgba(239,68,68,.1)}.quiz .btn{margin-top:22px}.quiz .btn:disabled{opacity:.4;cursor:not-allowed}.quiz-result{text-align:center;max-width:650px;margin:30px auto;background:var(--surface);border:1px solid var(--border);border-radius:25px;padding:55px}.quiz-result>span{color:var(--purple);font-size:40px}.quiz-result h2{font:400 52px "DM Serif Display"}.quiz-result p{color:var(--muted);font-size:13px;margin:10px 0 22px}
+.footer{border-top:1px solid var(--border);padding:45px 6%;display:flex;justify-content:space-between;align-items:center;color:var(--muted);font-size:12px}.footer .logo{color:var(--text);transform:scale(.8);transform-origin:left center}.modal{position:fixed;inset:0;z-index:50;background:rgba(10,5,18,.65);backdrop-filter:blur(7px);display:none;place-items:center;padding:20px}.modal.open{display:grid}.modal-box{max-width:540px;background:var(--surface);padding:40px;border-radius:22px;position:relative;box-shadow:var(--shadow)}.modal-box h2{font:400 40px "DM Serif Display";margin-bottom:10px}.modal-box p{color:var(--muted);font-size:13px}.modal-box>button{position:absolute;right:16px;top:10px;border:0;background:none;color:var(--muted);font-size:28px;cursor:pointer}.toast{position:fixed;bottom:20px;right:20px;z-index:100;background:#181321;color:#fff;padding:11px 16px;border-radius:10px;font-size:12px;transform:translateY(100px);opacity:0;transition:.3s}.toast.show{transform:none;opacity:1}.loader{position:fixed;inset:0;background:var(--bg);display:grid;place-items:center;z-index:200;transition:.5s}.loader span{color:var(--purple);font-size:48px;animation:pulse 1s infinite alternate}.loader.hide{opacity:0;pointer-events:none}.reveal{opacity:0;transform:translateY(18px);transition:.7s}.reveal.visible{opacity:1;transform:none}
+@keyframes pulse{to{transform:scale(1.15)}}@keyframes float{50%{transform:translateY(-12px) rotate(-5deg)}}
+.gradient-vazado {
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+    background: linear-gradient(100deg, var(--purple), var(--purple2), #ec4899);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-stroke: 1px transparent;
+}
+.card img, .theory img {
+    width: 100%;          
+    height: 320px;        
+    object-fit: cover;    
+    object-position: top; 
+    border-radius: 14px;  
+}
+.cards.four {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); 
+    gap: 16px; 
+    align-items: start;
+}
+.cards.four .card {
+    overflow: hidden; 
+}
+.cards.four .card img {
+    width: 100%;
+    height: 240px;        
+    object-fit: cover;    
+    object-position: top; 
+    transition: transform 0.5s ease; 
+}
+.cards.four .card:hover img {
+    transform: scale(1.12); 
+}
+.cards.four {
+    align-items: stretch !important; 
+}
+.cards.four .card {
+    height: 100%;          
+    display: flex;
+    flex-direction: column; 
+}
+.cards.four .card a, 
+.cards.four .card button {
+    margin-top: auto;      
+    padding-top: 20px;     
+}
+@media(max-width:900px){.header nav{display:none;position:absolute;top:78px;left:0;right:0;padding:12px 6%;background:var(--bg);border-bottom:1px solid var(--border);flex-direction:column}.header nav.open{display:flex}.menu-btn{display:block}.hero,.theory{grid-template-columns:1fr}.hero-art{height:390px}.cards.three,.meaning-grid{grid-template-columns:1fr 1fr}.level-grid,.learning{grid-template-columns:1fr}.progress-card{position:static}.salary{flex-direction:column;align-items:flex-start}.wheel{width:300px;height:300px}.wheel:after{width:165px;height:165px}}
+@media(max-width:600px){.section{padding:75px 0}.hero h1{font-size:45px}.hero-art{height:330px;transform:scale(.82)}.floating{display:none}.cards.three,.meaning-grid{grid-template-columns:1fr}.color-pickers{flex-direction:column}.plus{transform:rotate(90deg)}.result{grid-template-columns:1fr}.result>#resultColor{min-height:210px}.result-info{padding:30px}.contrast{grid-template-columns:1fr}.quiz{padding:30px 22px}.quiz h2{font-size:27px}.footer{flex-direction:column;align-items:flex-start;gap:15px}.salary{padding:32px 24px}.career-box{padding:30px 22px}}
+.emoji-icon{display:inline-block!important;font-size:30px!important;background:transparent!important;padding:0!important;line-height:1!important;filter:drop-shadow(0 6px 10px rgba(124,58,237,.12))}.specialty>span.emoji-icon:before{display:none}
+.salary-copy{flex:1}.salary-source{display:block;margin-top:14px;color:#eadbff;font-size:12px;max-width:680px;line-height:1.6}.btn.white{background:#fff;color:#6d28d9;border:0;margin-top:18px}.btn.white:hover{transform:translateY(-2px);box-shadow:0 10px 25px rgba(0,0,0,.12)}.btn:disabled{opacity:.7;cursor:wait}
+.salary-reveal-area{min-width:440px;max-width:570px}.cute-delivery{min-height:185px;border:1px solid rgba(255,255,255,.24);background:rgba(255,255,255,.1);border-radius:24px;padding:25px;display:grid;grid-template-columns:80px 1fr;align-items:center;gap:12px;position:relative;overflow:hidden}.cute-delivery>span{grid-column:1/-1;text-align:center;color:#f5eaff;font-size:12px}.cute-robot{font-size:54px;animation:robotWalk 1.1s ease-in-out infinite alternate}.confetti-bomb{font-size:52px;animation:giftBounce .75s ease-in-out infinite alternate;filter:drop-shadow(0 8px 12px rgba(0,0,0,.12))}.cute-delivery.open .cute-robot{animation:robotExit .8s forwards}.cute-delivery.open .confetti-bomb{animation:giftPop .9s forwards}.salary-levels{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.salary-level{background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.22);border-radius:18px;padding:18px;min-width:0}.salary-level>span{font-size:12px;opacity:.7}.salary-level b{display:block;font-size:13px;margin:7px 0}.salary-level strong{display:block;font:400 25px "DM Serif Display";line-height:1.05}.salary-level small{display:block;margin-top:10px;color:#f0e6ff;font-size:12px;line-height:1.5}.reveal-salary{animation:salaryReveal .75s cubic-bezier(.2,.9,.25,1) both}
+@keyframes robotWalk{to{transform:translateX(12px) rotate(3deg)}}@keyframes giftBounce{to{transform:translateY(-9px) rotate(5deg)}}@keyframes robotExit{to{transform:translateX(180px);opacity:0}}@keyframes giftPop{0%{transform:scale(1)}45%{transform:scale(1.25) rotate(-8deg)}100%{transform:scale(0);opacity:0}}@keyframes salaryReveal{from{opacity:0;transform:translateY(18px) scale(.97)}to{opacity:1;transform:none}}
+.color-theory-panel{margin-top:26px;display:grid;grid-template-columns:110px 1fr;gap:20px;align-items:center;background:var(--surface);border:1px solid var(--border);border-radius:22px;padding:22px;box-shadow:var(--shadow)}.theory-prompt{grid-column:1/-1;font-size:12px;color:var(--muted);padding-bottom:4px}.selected-color-visual{width:100px;height:100px;border-radius:22px;box-shadow:inset 0 0 0 1px rgba(0,0,0,.08),0 12px 25px rgba(0,0,0,.12);transition:.35s}.color-theory-panel h2{font:400 34px "DM Serif Display"}.color-theory-panel p{font-size:12px;color:var(--muted);max-width:700px}.wheel{overflow:visible}.color-dot{position:absolute;left:50%;top:50%;width:46px;height:46px;border-radius:50%;border:4px solid var(--surface);background:var(--dot-color);box-shadow:0 7px 18px rgba(0,0,0,.2);cursor:pointer;transform:translate(-50%,-50%) rotate(var(--angle)) translateY(-135px) rotate(calc(var(--angle) * -1));transition:.22s;z-index:3}.color-dot:hover,.color-dot:focus,.color-dot.selected{transform:translate(-50%,-50%) rotate(var(--angle)) translateY(-135px) rotate(calc(var(--angle) * -1)) scale(1.2);outline:3px solid rgba(255,255,255,.8);outline-offset:3px}.wheel-center{pointer-events:none;text-align:center;max-width:90px;line-height:1.4}
+.ai-palettes{margin-top:65px;background:var(--surface);border:1px solid var(--border);border-radius:25px;padding:28px;box-shadow:var(--shadow)}.ai-heading{display:flex;align-items:center;justify-content:space-between;gap:20px}.ai-heading h2{font:400 35px "DM Serif Display"}.ai-heading p{font-size:12px;color:var(--muted);max-width:650px}.ai-palette-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:24px}.ai-palette-card{border:1px solid var(--border);border-radius:18px;padding:17px;background:var(--bg);transition:.25s}.ai-palette-card:hover{transform:translateY(-5px);border-color:rgba(124,58,237,.35);box-shadow:var(--shadow)}.ai-card-top span{display:block;font-size:8px;color:var(--purple);letter-spacing:1px}.ai-card-top b{display:block;margin-top:5px;font-size:14px}.swatches{display:flex;height:70px;border-radius:12px;overflow:hidden;margin:14px 0}.swatches i{flex:1;display:block;transition:.25s}.swatches i:hover{flex:1.6}.ai-palette-card p{font-size:12px;line-height:1.6}.ai-palette-card p strong{color:var(--text)}.ai-palette-card small{display:block;color:var(--muted);margin-top:7px;font-size:12px;line-height:1.5}
+@media(max-width:900px){.salary-reveal-area{min-width:0;width:100%}.salary-levels{grid-template-columns:1fr}.ai-palette-grid{grid-template-columns:1fr 1fr}.ai-heading{align-items:flex-start;flex-direction:column}.color-dot{width:40px;height:40px}.color-dot:hover,.color-dot:focus,.color-dot.selected{transform:translate(-50%,-50%) rotate(var(--angle)) translateY(-116px) rotate(calc(var(--angle) * -1)) scale(1.15)}}
+@media(max-width:600px){.color-theory-panel{grid-template-columns:80px 1fr;padding:16px}.selected-color-visual{width:72px;height:72px}.color-theory-panel h2{font-size:27px}.ai-palette-grid{grid-template-columns:1fr}.ai-palettes{padding:20px}.cute-delivery{grid-template-columns:60px 1fr}.cute-robot,.confetti-bomb{font-size:42px}.salary-level strong{font-size:22px}}
+.icon.emoji-icon{width:auto;height:auto;display:block;place-items:initial;background:transparent!important;border-radius:0;margin-bottom:26px;color:var(--purple);font-size:58px!important;line-height:1;padding:0!important;box-shadow:none;filter:drop-shadow(0 8px 14px rgba(124,58,237,.18))}
+.specialty>span.emoji-icon{display:block!important;width:auto;height:auto;background:transparent!important;border:0;padding:0!important;margin:0 0 25px!important;border-radius:0;font-size:58px!important;line-height:1.05;filter:drop-shadow(0 8px 14px rgba(124,58,237,.2))}
+.specialty h3{margin-top:0}
+.cute-robot{position:relative;width:92px;height:105px;display:block;font-size:0!important;animation:robotWalk 1.1s ease-in-out infinite alternate;filter:drop-shadow(0 10px 16px rgba(0,0,0,.22))}
+.cute-robot .antenna{position:absolute;left:43px;top:0;width:6px;height:18px;background:linear-gradient(var(--purple2),var(--purple));border-radius:8px}
+.cute-robot .antenna:after{content:"";position:absolute;left:-5px;top:-7px;width:16px;height:16px;border-radius:50%;background:#d8b4fe;box-shadow:0 0 14px rgba(216,180,254,.75)}
+.robot-head{position:absolute;left:7px;top:16px;width:78px;height:51px;border-radius:20px 20px 17px 17px;background:linear-gradient(145deg,#c084fc,#7c3aed 72%);border:3px solid #e9d5ff;box-shadow:inset 0 3px 8px rgba(255,255,255,.28),0 8px 18px rgba(0,0,0,.2);display:block}
+.robot-head i{position:absolute;top:19px;width:11px;height:11px;border-radius:50%;background:#fff;box-shadow:0 0 9px #fff}
+.robot-head i:first-child{left:19px}.robot-head i:nth-child(2){right:19px}
+.robot-head b{position:absolute;left:31px;top:28px;color:#fff;font-size:15px;font-family:Arial,sans-serif;font-weight:700}
+.robot-body{position:absolute;left:21px;top:67px;width:50px;height:34px;border-radius:12px 12px 16px 16px;background:linear-gradient(145deg,#a855f7,#6d28d9);border:3px solid #e9d5ff;display:block}
+.robot-body:before,.robot-body:after{content:"";position:absolute;top:7px;width:13px;height:26px;border-radius:10px;background:#8b5cf6;border:2px solid #ddd6fe}
+.robot-body:before{left:-17px;transform:rotate(18deg)}.robot-body:after{right:-17px;transform:rotate(-18deg)}
+.robot-body em{position:absolute;bottom:-11px;width:10px;height:14px;border-radius:6px;background:#6d28d9;border:2px solid #ddd6fe}
+.robot-body em:first-child{left:8px}.robot-body em:nth-child(2){right:8px}
+.confetti-bomb{font-size:48px!important}
+@media(max-width:600px){.icon.emoji-icon,.specialty>span.emoji-icon{font-size:52px!important}.cute-robot{transform:scale(.9);transform-origin:center}}
+.logo span:last-child{text-transform:uppercase;letter-spacing:.08em;}
+
+/* --- ESTILOS NOVOS PARA INTERATIVIDADE AVANÇADA --- */
+/* Scratchpad / Canvas Interativo (Drag & Drop de stickers) */
+
+/* Painel de Áudio e Easter Eggs */
+.audio-control-bar { display: flex; align-items: center; justify-content: space-between; background: var(--surface); border: 1px solid var(--border); padding: 15px 25px; border-radius: 16px; margin-top: 30px; box-shadow: var(--shadow); }
+
+
+/* Ajustes de qualidade: foco visível, responsividade e movimento reduzido */
+:focus-visible{outline:3px solid var(--purple2);outline-offset:3px}
+button,a,input,label{ -webkit-tap-highlight-color:transparent }
+button{touch-action:manipulation}
+.playground-controls{grid-template-columns:repeat(3,minmax(0,1fr))}
+.salary-reveal-area{min-width:0;width:min(100%,570px)}
+.salary-levels{grid-template-columns:repeat(3,minmax(0,1fr))}
+.swatch-code{display:block;margin-top:5px;font:600 12px/1.4 monospace;color:var(--muted);text-align:center;overflow-wrap:anywhere}
+.palette-copy{margin-top:12px;border:1px solid var(--border);background:var(--surface);color:var(--text);border-radius:9px;padding:8px 11px;font-size:12px;cursor:pointer}
+@media(max-width:900px){.playground-controls{grid-template-columns:repeat(2,minmax(0,1fr))}.playground-controls .card:last-child{grid-column:1/-1}}
+@media(max-width:600px){.playground-controls{grid-template-columns:1fr}.playground-controls .card:last-child{grid-column:auto}.salary-levels{grid-template-columns:1fr}.hero-art{max-width:100%;overflow:hidden}.stats{flex-wrap:wrap;gap:14px}.career-tabs{flex-wrap:wrap}.career{padding:10px 14px}.color-dot{width:36px;height:36px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}.reveal{opacity:1;transform:none}.card:hover,.ai-palette-card:hover{transform:none}}
+
+
+/* RESPONSIVIDADE FINAL: computador, tablet e celular */
+html { max-width: 100%; overflow-x: clip; }
+body { min-width: 320px; max-width: 100%; overflow-x: clip; }
+img, svg, video, iframe, canvas { max-width: 100%; }
+button, input, select, textarea { max-width: 100%; }
+button, a { -webkit-tap-highlight-color: transparent; }
+.header { gap: 12px; }
+.header nav a { white-space: nowrap; }
+.section, .tinted { min-width: 0; }
+.card, .career-box, .result-info, .ai-palette-card, .color-theory-panel,
+.cute-delivery, .salary, .salary-reveal-area { min-width: 0; }
+.card p, .heading p, .hero p, .result-info p, .ai-palette-card p,
+.color-theory-panel p, .salary p { overflow-wrap: anywhere; }
+:focus-visible { outline: 3px solid var(--purple2); outline-offset: 3px; }
+
+@media (min-width: 901px) and (max-width: 1180px) {
+  .header { padding-inline: 4%; }
+  .header nav { gap: 1px; }
+  .header nav a { padding: 8px 7px; font-size:12px; }
+  .section { width: 92%; }
+  .hero { gap: 24px; }
+  .hero-art { transform: scale(.9); }
+}
+@media (max-width: 900px) {
+  .header { height: 70px; padding-inline: 4%; }
+  .header nav { top: 70px; z-index: 30; max-height: calc(100dvh - 70px); overflow-y: auto; }
+  .header nav a { display: block; width: 100%; padding: 12px 14px; font-size: 14px; }
+  .header-actions { margin-left: auto; }
+  .section { width: 90%; padding-block: 76px; }
+  .hero { min-height: auto; padding-top: 48px; grid-template-columns: minmax(0,1fr); gap: 12px; }
+  .hero-copy { min-width: 0; }
+  .hero-art { height: min(390px, 85vw); width: 100%; transform: none; }
+  .design-letter { width: clamp(155px, 28vw, 220px); height: clamp(155px, 28vw, 220px); font-size: clamp(95px, 18vw, 130px); }
+  .orb { width: min(70vw, 320px); height: min(70vw, 320px); }
+  .orb2 { width: min(82vw, 370px); height: min(82vw, 370px); }
+  .one { right: 2%; top: 5%; }
+  .two { left: 2%; bottom: 5%; }
+  .cards.three, .meaning-grid, .ai-palette-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .theory { grid-template-columns: minmax(0,1fr); gap: 32px; }
+  .theory > * { min-width: 0; }
+  .wheel { width: min(350px, 78vw); height: min(350px, 78vw); }
+  .wheel:after { width: 54%; height: 54%; }
+  .color-dot { transform: translate(-50%,-50%) rotate(var(--angle)) translateY(calc(min(350px, 78vw) * -.385)) rotate(calc(var(--angle) * -1)); }
+  .color-dot:hover, .color-dot:focus, .color-dot.selected { transform: translate(-50%,-50%) rotate(var(--angle)) translateY(calc(min(350px, 78vw) * -.385)) rotate(calc(var(--angle) * -1)) scale(1.12); }
+  .learning { grid-template-columns: minmax(0,1fr); }
+  .progress-card { position: static; }
+  .salary { align-items: stretch; }
+  .salary-reveal-area { width: 100%; max-width: 100%; }
+  .salary-levels { grid-template-columns: repeat(3,minmax(0,1fr)); }
+  .playground-controls { grid-template-columns: repeat(2,minmax(0,1fr)); }
+}
+@media (max-width: 600px) {
+  .header { padding-inline: 4%; gap: 8px; }
+  .logo { font-size: 25px; }
+  .header-actions { gap: 6px; }
+  .icon-btn, .menu-btn { width: 42px; height: 42px; flex: 0 0 42px; }
+  .section { width: 92%; padding-block: 58px; }
+  .hero { padding-top: 34px; }
+  .hero h1, .page h1 { font-size: clamp(2.5rem, 12vw, 3.4rem); letter-spacing: -1.5px; overflow-wrap: anywhere; }
+  .hero p, .heading > p { font-size: 14px; }
+  .heading { margin-bottom: 28px; }
+  .heading h2 { font-size: clamp(1.9rem, 8vw, 2.5rem); }
+  .heading.smaller { margin-top: 60px; }
+  .hero-art { height: 300px; }
+  .floating { font-size:12px; padding: 10px 12px; max-width: 44%; }
+  .stats { flex-wrap: wrap; gap: 12px 18px; }
+  .cards.three, .meaning-grid, .ai-palette-grid, .playground-controls { grid-template-columns: minmax(0,1fr); }
+  .playground-controls .card:last-child { grid-column: auto; }
+  .card { padding: 22px; }
+  .career-tabs { overflow-x: auto; flex-wrap: nowrap; max-width: 100%; }
+  .career { flex: 0 0 auto; padding: 10px 13px; }
+  .career-box { padding: 24px 18px; border-radius: 18px; }
+  .level h2, .salary h2 { font-size: clamp(1.8rem, 8vw, 2.4rem); }
+  .level-no { font-size: 48px; }
+  .level-grid { grid-template-columns: minmax(0,1fr); gap: 22px; }
+  .salary { padding: 24px 18px; border-radius: 20px; gap: 22px; }
+  .salary-levels { grid-template-columns: minmax(0,1fr); }
+  .salary-level { padding: 15px; }
+  .cute-delivery { grid-template-columns: 48px minmax(0,1fr); padding: 16px; }
+  .cute-robot, .confetti-bomb { font-size: 38px; }
+  .color-pickers { flex-direction: column; gap: 12px; }
+  .picker { width: min(100%, 280px); }
+  .picker input { height: 75px; }
+  .plus { transform: rotate(90deg); }
+  .result { grid-template-columns: minmax(0,1fr); }
+  .result > #resultColor { min-height: 170px; }
+  .result-info { padding: 24px 20px; }
+  .result-info h2 { font-size: 2rem; }
+  .contrast { grid-template-columns: minmax(0,1fr); }
+  .contrast > div { padding: 26px; font-size: 21px; }
+  .palette { height: 76px; margin-top: 35px; }
+  .color-theory-panel { grid-template-columns: 64px minmax(0,1fr); gap: 12px; padding: 14px; }
+  .selected-color-visual { width: 60px; height: 60px; border-radius: 14px; }
+  .color-theory-panel h2 { font-size: 1.5rem; overflow-wrap: anywhere; }
+  .ai-palettes { padding: 17px; margin-top: 42px; }
+  .ai-heading h2 { font-size: 1.7rem; }
+  .wheel { width: min(290px, 76vw); height: min(290px, 76vw); }
+  .color-dot { width: 34px; height: 34px; transform: translate(-50%,-50%) rotate(var(--angle)) translateY(calc(min(290px, 76vw) * -.385)) rotate(calc(var(--angle) * -1)); }
+  .color-dot:hover, .color-dot:focus, .color-dot.selected { transform: translate(-50%,-50%) rotate(var(--angle)) translateY(calc(min(290px, 76vw) * -.385)) rotate(calc(var(--angle) * -1)) scale(1.1); }
+  .quiz { padding: 24px 18px; }
+  .quiz h2 { font-size: 1.5rem; }
+  .answer { text-align: left; }
+      .audio-control-bar { flex-wrap: wrap; gap: 12px; padding: 14px; }
+  .footer { flex-direction: column; align-items: flex-start; gap: 14px; }
+  .btn { min-height: 44px; }
+}
+@media (max-width: 360px) {
+  .header { padding-inline: 3%; }
+  .logo { font-size: 22px; }
+  .icon-btn, .menu-btn { width: 38px; height: 38px; flex-basis: 38px; }
+  .section { width: 94%; }
+  .hero h1, .page h1 { font-size: 2.35rem; }
+  .color-theory-panel { grid-template-columns: minmax(0,1fr); }
+  .selected-color-visual { width: 54px; height: 54px; }
+}
+
+
+
+/* AJUSTES FINAIS — cartões e imagens responsivos */
+.cards, .cards.three, .cards.four { min-width: 0; }
+.cards.four .card { min-width: 0; }
+.cards.four .card img {
+  display: block;
+  width: 100%;
+  height: clamp(180px, 20vw, 250px);
+  object-fit: cover;
+  object-position: center top;
+  border-radius: 14px;
+}
+
+/* TABLET: especialistas em duas colunas (duas caixas por linha) */
+@media screen and (min-width: 601px) and (max-width: 1024px) {
+  .cards.four {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 20px;
+  }
+  .cards.four .card { padding: clamp(16px, 2.4vw, 26px); }
+  .cards.four .card img { height: clamp(190px, 28vw, 270px); }
+}
+
+/* CELULAR: uma caixa por linha para manter a leitura confortável */
+@media screen and (max-width: 600px) {
+  .cards.four {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 18px;
+  }
+  .cards.four .card { padding: 20px; }
+  .cards.four .card img { height: clamp(190px, 62vw, 280px); }
+}
+
+/* Telas muito estreitas */
+@media screen and (max-width: 360px) {
+  .cards.four .card { padding: 16px; }
+  .cards.four .card img { height: 190px; }
+}
+
+/* =========================================================
+   REVISÃO — acessibilidade, ícones SVG, avatares, playground
+   ========================================================= */
+.skip-link{position:absolute;left:12px;top:-64px;z-index:100;background:var(--purple);color:#fff;padding:10px 16px;border-radius:10px;font-weight:600;transition:top .2s}
+.skip-link:focus{top:12px}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0;padding:0;margin:-1px}
+
+/* Ícones unificados (SVG, herdam a cor) */
+.ico{display:block;width:72px;height:72px;padding:16px;margin:0 0 20px;border-radius:22px;background:var(--tint);color:var(--purple);box-sizing:border-box;transition:background .25s,color .25s,transform .25s}
+.ico svg{display:block;width:100%;height:100%;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.card:hover .ico{background:var(--purple);color:#fff}
+
+/* Avatares das referências (sem hotlink de fotos de terceiros) */
+.cards.four .card .avatar{display:grid;place-items:center;width:100%;height:clamp(130px,15vw,190px);border-radius:14px;margin-bottom:6px;color:#fff;font:400 clamp(48px,6vw,68px)/1 "DM Serif Display",serif;letter-spacing:-1px;background:linear-gradient(135deg,var(--a,#7c3aed),var(--b,#ec4899));text-shadow:0 4px 18px rgba(0,0,0,.25)}
+.cards.four .card p{font-size:14px;line-height:1.65}
+
+.site-credit{margin:42px auto 0;max-width:900px;text-align:center;color:var(--muted);font-size:13px;line-height:1.6}
+
+/* Scratchpad com arraste livre (mouse, toque e teclado) */
+.scratchpad-area{position:relative;display:block;min-height:260px;background:var(--surface);border:2px dashed var(--border);border-radius:20px;margin-top:20px;overflow:hidden;touch-action:pan-y}
+.scratchpad-hint{position:absolute;inset:auto 0 12px 0;text-align:center;font-size:12px;color:var(--muted);pointer-events:none}
+.draggable-item{position:absolute;left:0;top:0;touch-action:none;background:var(--tint);border:1px solid var(--border);padding:12px 18px;border-radius:12px;cursor:grab;font-weight:600;color:var(--purple);user-select:none;-webkit-user-select:none;box-shadow:var(--shadow);transition:box-shadow .2s,transform .2s;white-space:nowrap}
+.draggable-item.dragging{cursor:grabbing;transform:scale(1.06) rotate(-2deg);z-index:5;box-shadow:0 22px 50px rgba(60,35,100,.28)}
+.draggable-item:focus-visible{outline:3px solid var(--purple2);outline-offset:3px}
+.pad-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+
+/* Feedback do quiz fica visível (antes era um toast de 2s) */
+.q-feedback{margin:18px 0 0;font-size:14px;line-height:1.6;color:var(--text)}
+.q-feedback:not(:empty){padding:12px 16px;border-left:3px solid var(--purple);background:var(--tint);border-radius:10px}
+
+/* Paleta da teoria: mostra o HEX dentro de cada faixa */
+#palette span{display:flex;align-items:flex-end;justify-content:center;padding:10px;font:600 12px/1 ui-monospace,Menlo,Consolas,monospace;letter-spacing:.5px}
+.meaning-grid article i{box-shadow:inset 0 0 0 1px rgba(0,0,0,.12)}
+
+/* =========================================================
+   PIXEL — robô companheiro
+   ========================================================= */
+.pixel[hidden]{display:none!important}
+.pixel{position:fixed;right:max(16px,env(safe-area-inset-right));bottom:max(16px,env(safe-area-inset-bottom));z-index:40;display:flex;flex-direction:column;align-items:flex-end;gap:10px;pointer-events:none}
+.pixel>*{pointer-events:auto}
+
+.pixel-bubble{position:relative;width:max-content;max-width:min(310px,calc(100vw - 32px));background:var(--surface);color:var(--text);border:1px solid var(--border);border-radius:20px 20px 6px 20px;padding:16px 18px;box-shadow:var(--shadow);font-size:14px;line-height:1.55;animation:pxPop .28s cubic-bezier(.2,1.4,.4,1)}
+.pixel-bubble[hidden]{display:none}
+.pixel-bubble::after{content:"";position:absolute;right:30px;bottom:-8px;width:14px;height:14px;background:var(--surface);border-right:1px solid var(--border);border-bottom:1px solid var(--border);transform:rotate(45deg)}
+.pixel-bubble p{margin:0 18px 0 0;font-size:14px}
+.pixel-x{position:absolute;top:8px;right:8px;width:26px;height:26px;border:0;border-radius:50%;background:transparent;color:var(--muted);font-size:18px;line-height:1;cursor:pointer}
+.pixel-x:hover{background:var(--tint);color:var(--purple)}
+.pixel-actions{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.pixel-actions:empty{display:none}
+.pixel-btn{border:1px solid var(--border);background:var(--tint);color:var(--purple);border-radius:999px;padding:7px 13px;font-size:13px;font-weight:600;cursor:pointer;transition:background .18s,color .18s,transform .18s}
+.pixel-btn:hover{background:var(--purple);color:#fff;transform:translateY(-1px)}
+.pixel-btn.primary{background:var(--purple);color:#fff;border-color:transparent}
+.pixel-btn.primary:hover{background:var(--purple2)}
+.pixel-form{display:flex;gap:6px;margin-top:12px}
+.pixel-form[hidden]{display:none}
+.pixel-form input{flex:1;min-width:0;border:1px solid var(--border);background:var(--bg);color:var(--text);border-radius:999px;padding:8px 14px;font-size:14px}
+
+.pixel-bot{display:block;width:88px;padding:0;border:0;background:none;cursor:pointer;filter:drop-shadow(0 12px 18px rgba(90,40,160,.32));-webkit-tap-highlight-color:transparent;transform-origin:50% 90%}
+.pixel-bot svg{display:block;width:100%;height:auto;overflow:visible;animation:pxBob 3.2s ease-in-out infinite}
+.pixel-bot:focus-visible{outline:3px solid var(--purple2);outline-offset:4px;border-radius:24px}
+
+/* modo "seguir o mouse": o balão passa a ser posicionado em relação ao robô */
+.pixel.following{right:auto;bottom:auto;left:0;top:0;display:block;will-change:transform}
+.pixel.following .pixel-bubble{position:absolute;right:0;bottom:100%;margin-bottom:12px}
+.pixel.following.flip-x .pixel-bubble{right:auto;left:0;border-radius:20px 20px 20px 6px}
+.pixel.following.flip-x .pixel-bubble::after{right:auto;left:30px}
+.pixel.following.flip-y .pixel-bubble{bottom:auto;top:100%;margin:12px 0 0}
+.pixel.following.flip-y .pixel-bubble::after{bottom:auto;top:-8px;transform:rotate(225deg)}
+
+/* partes do SVG */
+.px-eyes{transform:translate(var(--ex,0px),var(--ey,0px));transition:transform .12s ease-out;filter:drop-shadow(0 0 3px rgba(103,232,249,.9))}
+.px-eye{transform-box:fill-box;transform-origin:center;transition:transform .1s}
+.pixel.blink .px-eye{transform:scaleY(.1)}
+.pixel[data-mood="wow"] .px-eye{transform:scale(1.18)}
+.pixel.sleepy .px-eye{transform:scaleY(.12)}
+.px-m-open,.px-m-wow{display:none;transform-box:fill-box;transform-origin:center}
+.pixel.talking .px-smile{display:none}
+.pixel.talking .px-m-open{display:block;animation:pxTalk .26s ease-in-out infinite alternate}
+.pixel[data-mood="wow"] .px-smile{display:none}
+.pixel[data-mood="wow"] .px-m-wow{display:block}
+.pixel[data-mood="wow"].talking .px-m-open{display:none}
+.px-bulb{animation:pxGlow 1.8s ease-in-out infinite}
+.px-arm-l{transform-origin:27px 87px;transform:rotate(8deg)}
+.px-arm-r{transform-origin:93px 87px;transform:rotate(-8deg)}
+.pixel.wave .px-arm-r{animation:pxWave .42s ease-in-out 6 alternate}
+.pixel[data-act="dance"] .px-arm-l{animation:pxArmL .45s ease-in-out infinite alternate}
+.pixel[data-act="dance"] .px-arm-r{animation:pxWave .45s ease-in-out infinite alternate-reverse}
+.pixel[data-act="dance"] svg{animation:pxDance .9s ease-in-out infinite}
+.pixel[data-act="jump"] svg{animation:pxJump .6s ease-out}
+.px-z{display:none}
+.pixel.sleepy .px-z{display:block}
+.pixel.sleepy .px-z text{animation:pxZ 2.4s ease-in-out infinite}
+.pixel.sleepy .px-z text:nth-child(2){animation-delay:.8s}
+.pixel.enter .pixel-bot{animation:pxIn .9s cubic-bezier(.2,1.3,.4,1) both}
+
+@keyframes pxBob{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+@keyframes pxPop{from{opacity:0;transform:translateY(8px) scale(.92)}to{opacity:1;transform:none}}
+@keyframes pxIn{from{opacity:0;transform:translateY(140px) rotate(14deg)}to{opacity:1;transform:none}}
+@keyframes pxJump{0%{transform:translateY(0)}30%{transform:translateY(-26px) scale(.96,1.06)}60%{transform:translateY(0) scale(1.06,.94)}100%{transform:translateY(0)}}
+@keyframes pxDance{0%,100%{transform:rotate(0) translateY(0)}25%{transform:rotate(-9deg) translateY(-8px)}75%{transform:rotate(9deg) translateY(-8px)}}
+@keyframes pxWave{from{transform:rotate(-125deg)}to{transform:rotate(-165deg)}}
+@keyframes pxArmL{from{transform:rotate(125deg)}to{transform:rotate(165deg)}}
+@keyframes pxTalk{from{transform:scaleY(.35)}to{transform:scaleY(1)}}
+@keyframes pxGlow{0%,100%{opacity:1}50%{opacity:.45}}
+@keyframes pxZ{0%{opacity:0;transform:translate(0,6px)}30%{opacity:1}100%{opacity:0;transform:translate(8px,-14px)}}
+
+@media(max-width:600px){
+  .pixel-bot{width:68px}
+  .pixel-bubble{padding:14px 16px}
+}
+@media(prefers-reduced-motion:reduce){
+  .pixel *,.pixel *::before,.pixel *::after{animation:none!important;transition:none!important}
+}
+@media print{.pixel{display:none!important}}
+
+/* =========================================================
+   GERADOR DE PALETAS (tipos de harmonia)
+   ========================================================= */
+.pal-controls{display:flex;flex-wrap:wrap;gap:16px 24px;align-items:center;justify-content:space-between;margin-top:24px}
+.pal-types{display:flex;flex-wrap:wrap;gap:8px}
+.pal-types button{border:1px solid var(--border);background:var(--surface);color:var(--muted);padding:8px 14px;border-radius:999px;font-size:13px;font-weight:600;cursor:pointer;transition:background .18s,color .18s,transform .18s}
+.pal-types button:hover{color:var(--purple);transform:translateY(-1px)}
+.pal-types button[aria-pressed="true"]{background:var(--purple);color:#fff;border-color:transparent}
+.pal-base{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--muted);flex-wrap:wrap}
+.pal-base input[type="color"]{width:44px;height:36px;padding:2px;border:1px solid var(--border);border-radius:9px;background:var(--surface);cursor:pointer}
+.pal-check{display:flex;align-items:center;gap:6px;cursor:pointer}
+.pal-check input{accent-color:var(--purple);width:16px;height:16px}
+.pal-hint{margin-top:14px;font-size:13px;color:var(--muted)}
+.pal-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:20px}
+.pal-card{background:var(--bg);border:1px solid var(--border);border-radius:18px;padding:14px;min-width:0}
+.pal-swatches{display:flex;height:130px;border-radius:12px;overflow:hidden}
+.pal-sw{flex:1;min-width:0;border:0;cursor:pointer;display:flex;align-items:flex-end;justify-content:center;padding:0 0 10px;font:600 12px ui-monospace,Menlo,Consolas,monospace;transition:flex .25s ease}
+.pal-sw:hover,.pal-sw:focus-visible{flex:1.6}
+.pal-sw:focus-visible{outline:3px solid var(--purple2);outline-offset:-3px}
+.pal-meta{display:flex;align-items:center;justify-content:space-between;gap:10px 14px;margin-top:12px;flex-wrap:wrap}
+.pal-name b{display:block;font-size:14px;line-height:1.3}
+.pal-name small{color:var(--muted);font-size:12px}
+.pal-actions{display:flex;gap:6px;flex-wrap:wrap}
+.pal-actions button{border:1px solid var(--border);background:var(--surface);color:var(--text);border-radius:9px;padding:7px 11px;font-size:12px;font-weight:600;cursor:pointer;transition:background .18s,color .18s}
+.pal-actions button:hover{background:var(--tint);color:var(--purple)}
+.pal-actions button[aria-pressed="true"]{background:var(--purple);color:#fff;border-color:transparent}
+.pal-saved{margin-top:34px;padding-top:24px;border-top:1px solid var(--border)}
+.pal-saved[hidden]{display:none}
+.pal-saved h3{font-size:18px}
+@media(max-width:700px){.pal-grid{grid-template-columns:minmax(0,1fr)}.pal-swatches{height:110px}}
+
+  
+/* ===== Níveis da carreira (seções separadas) ===== */
+.lvl-junior{--lv:#0e7490}.lvl-pleno{--lv:#7c3aed}.lvl-senior{--lv:#b45309}
+[data-theme=dark] .lvl-junior{--lv:#22d3ee}[data-theme=dark] .lvl-pleno{--lv:#c084fc}[data-theme=dark] .lvl-senior{--lv:#fbbf24}
+.path-line{height:6px;border-radius:99px;background:linear-gradient(90deg,#0e7490,#7c3aed,#b45309);margin:0 0 26px;opacity:.85}
+.path{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+.path-card{display:flex;flex-direction:column;gap:6px;text-decoration:none;color:var(--text);background:var(--surface);border:1px solid var(--border);border-top:5px solid var(--lv);border-radius:22px;padding:26px;box-shadow:var(--shadow);transition:transform .25s,box-shadow .25s}
+.path-card:hover,.path-card:focus-visible{transform:translateY(-6px)}
+.path-no{font:400 15px "DM Serif Display";color:var(--lv);letter-spacing:2px}
+.path-card h3{font:400 34px "DM Serif Display"}
+.path-card b{color:var(--lv);font-size:15px}
+.path-card p{color:var(--muted);font-size:15px;line-height:1.6}
+.path-go{margin-top:auto;padding-top:12px;font-weight:700;font-size:15px;color:var(--lv)}
+.lvl{padding:105px 6%;scroll-margin-top:0}.lvl.alt{background:var(--tint)}
+.lvl-in{max-width:1120px;margin:auto}
+.lvl-head{display:flex;justify-content:space-between;align-items:flex-start;gap:24px;margin-bottom:28px}
+.lvl-head .eyebrow{color:var(--lv)}
+.lvl h2.lvl-t,.lvl-head h2{font:400 clamp(38px,5vw,60px)/1.08 "DM Serif Display";letter-spacing:-.5px}
+.lvl-name{color:var(--lv)}
+.lvl-lead{color:var(--muted);font-size:18px;line-height:1.6;margin-top:12px;max-width:620px}
+.lvl-no{font:400 clamp(90px,14vw,170px)/.8 "DM Serif Display";color:var(--lv);opacity:.16;flex:none;user-select:none}
+.lvl-steps{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:30px}
+.lvl-steps a{display:inline-flex;gap:8px;align-items:center;padding:9px 18px;border-radius:99px;border:1px solid var(--border);background:var(--surface);color:var(--muted);text-decoration:none;font-weight:600;font-size:14px}
+.lvl-steps a b{color:var(--lv)}
+.lvl-steps a.on{background:var(--lv);border-color:var(--lv);color:#fff}
+.lvl-steps a.on b{color:#fff}
+[data-theme=dark] .lvl-steps a.on,[data-theme=dark] .lvl-steps a.on b{color:#0c0912}
+.lvl-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
+.lvl-card{background:var(--surface);border:1px solid var(--border);border-top:4px solid var(--lv);border-radius:22px;padding:28px;box-shadow:var(--shadow)}
+.lvl-ico{width:50px;height:50px;border-radius:15px;display:grid;place-items:center;color:var(--lv);background:color-mix(in srgb,var(--lv) 14%,transparent);margin-bottom:16px}
+.lvl-card h3{font-size:19px;margin-bottom:8px}
+.lvl-card p{color:var(--muted);font-size:15.5px;line-height:1.7}
+.lvl-skills{margin-top:26px}
+.lvl-skills h3{font-size:14px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:12px}
+.lvl-skills ul{list-style:none;display:flex;flex-wrap:wrap;gap:10px}
+.lvl-skills li{padding:9px 17px;border-radius:99px;font-weight:600;font-size:14px;color:var(--lv);background:color-mix(in srgb,var(--lv) 12%,transparent);border:1px solid color-mix(in srgb,var(--lv) 30%,transparent)}
+.lvl-next{display:inline-block;margin-top:34px;font-weight:700;color:var(--lv);text-decoration:none;padding:12px 4px;border-bottom:2px solid currentColor}
+.lvl-next:hover{opacity:.75}
+#remuneracao{padding-top:80px;padding-bottom:80px}
+@media(max-width:900px){.path,.lvl-grid{grid-template-columns:minmax(0,1fr)}.lvl{padding:75px 6%}.lvl-no{position:absolute;right:6%;top:70px;font-size:90px}.lvl{position:relative}.lvl-head{padding-right:70px}}
+@media(prefers-reduced-motion:reduce){.path-card{transition:none}.path-card:hover{transform:none}}
+</style>
+</head>
+<body>
+  <a class="skip-link" href="#inicio">Pular para o conteúdo</a>
+  <noscript><style>.loader{display:none!important}.reveal{opacity:1!important;transform:none!important}</style></noscript>
+  <div class="loader"><span>♛</span></div>
+
+  <header class="header">
+    <a class="logo" href="#inicio">
+      <span class="crown">♛</span>
+      <span>ENTRE FORMAS</span>
+    </a>
+
+    <nav id="nav" aria-label="Seções do site">
+      <a href="#inicio">Início</a>
+      <a href="#design">Design</a>
+      <a href="#carreira">Carreira</a>
+      <a href="#cores">Cores</a>
+      <a href="#teoria">Teoria</a>
+      <a href="#playground-live">Playground</a>
+      <a href="#aprender">Aprenda</a>
+      <a href="#desafio">Desafio</a>
+    </nav>
+
+    <div class="header-actions">
+      <button id="themeBtn" class="icon-btn" aria-label="Alternar tema"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8.5 8.5 0 019.5 4 8.5 8.5 0 1020 14.5z"/></svg></button>
+      <button id="menuBtn" class="menu-btn" aria-label="Abrir menu" aria-expanded="false" aria-controls="nav">☰</button>
+    </div>
+  </header>
+
+
+  <main>
+    <section id="inicio" class="hero section">
+      <div class="hero-text reveal">
+        <span class="eyebrow">DESIGN • USABILIDADE • CRIATIVIDADE</span>
+        <h1>Design não é apenas<br><span class="gradient">deixar algo bonito.</span></h1>
+        <p>É criar soluções que funcionam, comunicam ideias e tornam a experiência das pessoas melhor.</p>
+        <div class="buttons">
+          <a class="btn primary" href="#design">Explorar o design →</a>
+          <a class="btn secondary" href="#desafio">Testar meus conhecimentos</a>
+        </div>
+        <div class="stats">
+          <div><b>01</b><span>Estética</span></div>
+          <div><b>02</b><span>Função</span></div>
+          <div><b>03</b><span>Experiência</span></div>
+        </div>
+      </div>
+
+      <div class="hero-art reveal">
+        <div class="orb orb1"></div><div class="orb orb2"></div>
+        <div class="floating one"><b>CRIATIVIDADE</b><small>ideias que comunicam</small></div>
+        <div class="floating two"><b>USABILIDADE</b><small>simples de entender</small></div>
+        <div class="design-letter">D</div>
+      </div>
+    </section>
+
+
+    <section id="design" class="section">
+      <div class="heading reveal">
+        <span class="eyebrow">FUNDAMENTOS</span>
+        <h2>O que realmente é <span class="gradient">Design?</span></h2>
+        <p>Design é o processo de planejar e criar algo para resolver um problema, transmitir uma mensagem ou melhorar uma experiência.</p>
+      </div>
+
+      <div class="cards three">
+        <article class="card reveal"><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/><path d="M19 16l.7 1.8 1.8.7-1.8.7L19 21l-.7-1.8-1.8-.7 1.8-.7z"/></svg></span><h3>Estética</h3><p>Organizar cores, formas, imagens e tipografia para criar uma composição visual coerente.</p></article>
+        <article class="card reveal"><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M13 2L5 14h6l-1 8 8-12h-6z"/></svg></span><h3>Função</h3><p>Uma solução precisa cumprir seu objetivo e facilitar a tarefa para a qual foi criada.</p></article>
+        <article class="card reveal"><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M12 20s-7-4.4-9-9.2C1.8 7.6 3.7 4.5 7 4.5c2 0 3.4 1 5 3 1.6-2 3-3 5-3 3.3 0 5.2 3.1 4 6.3C19 15.6 12 20 12 20z"/></svg></span><h3>Experiência</h3><p>O design também considera como uma pessoa percebe, entende e utiliza uma solução.</p></article>
+      </div>
+
+      <div class="heading smaller reveal"><span class="eyebrow">ESPECIALIDADES</span><h2>Existem vários caminhos.</h2></div>
+      <div class="cards three">
+        <article class="card specialty reveal"><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><circle cx="8" cy="9" r="4.5"/><rect x="11" y="11" width="9" height="9" rx="1.5"/><path d="M5 20l4-6 4 6z"/></svg></span><h3>Design Gráfico</h3><p>Comunicação visual, identidade, cartazes e materiais gráficos.</p><button class="more" data-title="Design Gráfico" data-text="Foca na comunicação visual. Tipografia, composição, imagens e cores trabalham juntas para transmitir uma mensagem.">Saiba mais →</button></article>
+        <article class="card specialty reveal"><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg></span><h3>Design Digital</h3><p>Experiências para sites, aplicativos, sistemas e produtos digitais.</p><button class="more" data-title="Design Digital" data-text="Combina estética, interação, arquitetura da informação e tecnologia para criar produtos digitais claros e úteis.">Saiba mais →</button></article>
+        <article class="card specialty reveal"><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c0-3.9 3.1-7 7-7s7 3.1 7 7"/></svg></span><h3>UX Design</h3><p>Pesquisa e experiência da pessoa antes, durante e depois do uso.</p><button class="more" data-title="UX Design" data-text="UX significa User Experience. O profissional pesquisa necessidades, identifica problemas e projeta experiências eficientes, acessíveis e agradáveis.">Saiba mais →</button></article>
+        <article class="card specialty reveal"><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M9 9v11"/></svg></span><h3>UI Design</h3><p>Interface visual e elementos com os quais o usuário interage.</p><button class="more" data-title="UI Design" data-text="UI significa User Interface. Envolve botões, cores, tipografia, componentes, estados e organização visual.">Saiba mais →</button></article>
+        <article class="card specialty reveal"><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9z"/><path d="M12 12l8-4.5M12 12L4 7.5M12 12v9"/></svg></span><h3>Design de Produto</h3><p>Forma, função, materiais, fabricação e necessidades humanas.</p><button class="more" data-title="Design de Produto" data-text="Busca equilibrar função, ergonomia, aparência, custo, materiais e viabilidade.">Saiba mais →</button></article>
+        <article class="card specialty reveal"><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M5 11V8a2 2 0 012-2h10a2 2 0 012 2v3"/><path d="M3 13a2 2 0 014 0v2h10v-2a2 2 0 014 0v5H3z"/><path d="M6 18v2M18 18v2"/></svg></span><h3>Design de Interiores</h3><p>Ambientes, conforto, estética, circulação e identidade.</p><button class="more" data-title="Design de Interiores" data-text="Iluminação, materiais, cores, móveis, proporções e circulação são pensados em conjunto para formar uma experiência.">Saiba mais →</button></article>
+      </div>
+
+       <div class="heading smaller reveal"><span class="eyebrow">REFERÊNCIAS</span><h2><span class="gradient-vazado">Mestres do UX e da usabilidade:</span> as mentes por trás das interfaces</h2></div>
+      <div class="cards four">
+        <article class="card specialty reveal"><div class="avatar" aria-hidden="true" style="--a:#7c3aed;--b:#ec4899">DN</div><h3>Don Norman</h3><p>Don Norman tirou o foco da tecnologia e o colocou nas pessoas. Nos anos 1990, na Apple, ajudou a popularizar o termo “User Experience” (UX). Autor de O Design do Dia a Dia, defende o design centrado no ser humano: se muita gente erra ao usar algo, a falha costuma estar no design, não nas pessoas.</p><button class="more" data-eyebrow="IDEIA CENTRAL" data-title="Don Norman" data-text="O bom design começa pelas pessoas: entender necessidades, contexto e limites humanos antes de decidir a aparência. Quando muita gente erra ao usar algo, o problema geralmente está no design.">Saiba mais →</button></article>
+        <article class="card specialty reveal"><div class="avatar" aria-hidden="true" style="--a:#2563eb;--b:#06b6d4">JN</div><h3>Jakob Nielsen</h3><p>Jakob Nielsen, cofundador do Nielsen Norman Group, é conhecido pelas 10 Heurísticas de Usabilidade (1994): princípios muito usados para avaliar interfaces, como visibilidade do status do sistema, consistência, prevenção de erros e reconhecimento em vez de memorização.</p><button class="more" data-eyebrow="IDEIA CENTRAL" data-title="Jakob Nielsen" data-text="As 10 heurísticas funcionam como um checklist para encontrar problemas de usabilidade: mostrar o que está acontecendo, falar a língua do usuário, manter consistência e ajudar a evitar e a corrigir erros.">Saiba mais →</button></article>
+        <article class="card specialty reveal"><div class="avatar" aria-hidden="true" style="--a:#f97316;--b:#ec4899">SK</div><h3>Steve Krug</h3><p>Autor de Não Me Faça Pensar (Don’t Make Me Think), Steve Krug defende que uma boa interface é tão evidente que a pessoa a usa quase no piloto automático. Se ela precisa parar para adivinhar onde clicar, a interface falhou.</p><button class="more" data-eyebrow="IDEIA CENTRAL" data-title="Steve Krug" data-text="Cada página deve ser autoexplicativa: quanto menos esforço mental a pessoa precisa fazer para entender o que é e onde clicar, melhor a interface.">Saiba mais →</button></article>
+        <article class="card specialty reveal"><div class="avatar" aria-hidden="true" style="--a:#16a34a;--b:#06b6d4">LW</div><h3>Luke Wroblewski</h3><p>Luke Wroblewski popularizou o conceito de Mobile First (a partir de 2009): projetar primeiro para a tela pequena. As restrições do celular obrigam a priorizar o essencial, e o resultado costuma ser um layout mais limpo em qualquer dispositivo.</p><button class="more" data-eyebrow="IDEIA CENTRAL" data-title="Luke Wroblewski" data-text="Começar pelo celular obriga a decidir o que realmente importa. Depois, a interface cresce para telas maiores sem perder foco.">Saiba mais →</button></article>
+      </div>
+
+
+    </section>
+
+        <section id="carreira" class="section tinted">
+      <div class="heading reveal">
+        <span class="eyebrow">CARREIRA</span>
+        <h2>Da primeira ideia à <span class="gradient">experiência.</span></h2>
+        <p>A evolução profissional depende de experiência, portfólio, especialização, responsabilidades e contexto de trabalho. Conheça cada nível em detalhes:</p>
+      </div>
+      <div class="path-line reveal" aria-hidden="true"></div>
+      <div class="path reveal">
+        <a class="path-card lvl-junior" href="#junior"><span class="path-no">01</span><h3>Júnior</h3><b>Até 2 anos</b><p>Aprendizado contínuo e domínio das ferramentas técnicas.</p><span class="path-go">Ver nível →</span></a>
+        <a class="path-card lvl-pleno" href="#pleno"><span class="path-no">02</span><h3>Pleno</h3><b>2 a 5 anos</b><p>Projetos de forma independente e melhoria de processos.</p><span class="path-go">Ver nível →</span></a>
+        <a class="path-card lvl-senior" href="#senior"><span class="path-no">03</span><h3>Sênior</h3><b>5 a 10 anos</b><p>Liderança de projetos complexos e visão de negócio.</p><span class="path-go">Ver nível →</span></a>
+      </div>
+    </section>
+
+    <section id="junior" class="lvl lvl-junior" aria-labelledby="junior-t">
+      <div class="lvl-in">
+        <div class="lvl-head reveal">
+          <div><span class="eyebrow">NÍVEL 1 DE 3 · INÍCIO DA CARREIRA</span>
+          <h2 id="junior-t">Designer <span class="lvl-name">Júnior</span></h2>
+          <p class="lvl-lead">Aprender, praticar e dominar as ferramentas do ofício.</p></div>
+          <span class="lvl-no" aria-hidden="true">01</span>
+        </div>
+        <nav class="lvl-steps" aria-label="Níveis da carreira"><a href="#junior" class="lvl-junior on" aria-current="true"><b>01</b> Júnior</a><a href="#pleno" class="lvl-pleno"><b>02</b> Pleno</a><a href="#senior" class="lvl-senior"><b>03</b> Sênior</a></nav>
+        <div class="lvl-grid reveal">
+          <article class="lvl-card"><div class="lvl-ico"><svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div><h3>Experiência</h3><p>Geralmente recém-formado ou com até 2 anos de mercado.</p></article>
+          <article class="lvl-card"><div class="lvl-ico"><svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11.5V16c0 1.5 3 3 6 3s6-1.5 6-3v-4.5"/></svg></div><h3>Formação recomendada</h3><p>Graduação concluída ou em andamento (Bacharelado ou Tecnólogo) em Design Gráfico, Design Digital, UX/UI, Desenho Industrial ou Comunicação Social. Cursos técnicos e bootcamps intensivos também são ótimas portas de entrada.</p></article>
+          <article class="lvl-card"><div class="lvl-ico"><svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg></div><h3>Perfil</h3><p>Profissional em início de carreira, focado no aprendizado contínuo e no domínio das ferramentas técnicas (como Figma e Pacote Adobe).</p></article>
+          <article class="lvl-card"><div class="lvl-ico"><svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a2 2 0 012-2h2a2 2 0 012 2v2M3 13h18"/></svg></div><h3>Atuação</h3><p>Executa tarefas de baixa e média complexidade sob a supervisão e orientação direta de designers mais experientes.</p></article>
+        </div>
+        <div class="lvl-skills reveal"><h3>Habilidades-chave</h3><ul><li>Tipografia</li><li>Composição</li><li>Cor</li><li>Ferramentas digitais</li><li>Organização</li><li>Comunicação</li></ul></div>
+        <a class="lvl-next" href="#pleno">Próximo nível: Pleno →</a>
+      </div>
+    </section>
+
+    <section id="pleno" class="lvl lvl-pleno alt" aria-labelledby="pleno-t">
+      <div class="lvl-in">
+        <div class="lvl-head reveal">
+          <div><span class="eyebrow">NÍVEL 2 DE 3 · EXPERIÊNCIA INTERMEDIÁRIA</span>
+          <h2 id="pleno-t">Designer <span class="lvl-name">Pleno</span></h2>
+          <p class="lvl-lead">Autonomia, maturidade técnica e segurança para defender escolhas.</p></div>
+          <span class="lvl-no" aria-hidden="true">02</span>
+        </div>
+        <nav class="lvl-steps" aria-label="Níveis da carreira"><a href="#junior" class="lvl-junior"><b>01</b> Júnior</a><a href="#pleno" class="lvl-pleno on" aria-current="true"><b>02</b> Pleno</a><a href="#senior" class="lvl-senior"><b>03</b> Sênior</a></nav>
+        <div class="lvl-grid reveal">
+          <article class="lvl-card"><div class="lvl-ico"><svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div><h3>Experiência</h3><p>Entre 2 e 5 anos de bagagem prática.</p></article>
+          <article class="lvl-card"><div class="lvl-ico"><svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11.5V16c0 1.5 3 3 6 3s6-1.5 6-3v-4.5"/></svg></div><h3>Formação recomendada</h3><p>Graduação concluída nas áreas de Design ou Comunicação. Nessa fase, ganham peso os cursos livres de especialização (focados em áreas como UX Research, Branding ou Motion Design) para aprofundar a maturidade técnica.</p></article>
+          <article class="lvl-card"><div class="lvl-ico"><svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg></div><h3>Perfil</h3><p>Possui maturidade técnica, boa capacidade de autogestão e segurança para defender suas escolhas visuais e conceituais.</p></article>
+          <article class="lvl-card"><div class="lvl-ico"><svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a2 2 0 012-2h2a2 2 0 012 2v2M3 13h18"/></svg></div><h3>Atuação</h3><p>Assume projetos de forma independente, propõe melhorias nos processos internos e colabora ativamente na resolução de problemas do dia a dia.</p></article>
+        </div>
+        <div class="lvl-skills reveal"><h3>Habilidades-chave</h3><ul><li>Pesquisa</li><li>Prototipação</li><li>Sistemas visuais</li><li>Apresentação</li><li>Colaboração</li></ul></div>
+        <a class="lvl-next" href="#senior">Próximo nível: Sênior →</a>
+      </div>
+    </section>
+
+    <section id="senior" class="lvl lvl-senior" aria-labelledby="senior-t">
+      <div class="lvl-in">
+        <div class="lvl-head reveal">
+          <div><span class="eyebrow">NÍVEL 3 DE 3 · ALTA EXPERIÊNCIA</span>
+          <h2 id="senior-t">Designer <span class="lvl-name">Sênior</span></h2>
+          <p class="lvl-lead">Estratégia, liderança e impacto direto nos resultados do negócio.</p></div>
+          <span class="lvl-no" aria-hidden="true">03</span>
+        </div>
+        <nav class="lvl-steps" aria-label="Níveis da carreira"><a href="#junior" class="lvl-junior"><b>01</b> Júnior</a><a href="#pleno" class="lvl-pleno"><b>02</b> Pleno</a><a href="#senior" class="lvl-senior on" aria-current="true"><b>03</b> Sênior</a></nav>
+        <div class="lvl-grid reveal">
+          <article class="lvl-card"><div class="lvl-ico"><svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div><h3>Experiência</h3><p>Acima de 5 a 10 anos de atuação sólida no mercado.</p></article>
+          <article class="lvl-card"><div class="lvl-ico"><svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11.5V16c0 1.5 3 3 6 3s6-1.5 6-3v-4.5"/></svg></div><h3>Formação recomendada</h3><p>Graduação concluída, frequentemente acompanhada por Pós-graduação, MBA ou especializações de negócios (como Gestão de Produtos, Design Leadership ou Marketing Estratégico). O diploma técnico dá lugar ao peso do histórico de projetos e resultados.</p></article>
+          <article class="lvl-card"><div class="lvl-ico"><svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg></div><h3>Perfil</h3><p>Visão altamente estratégica e focada em negócios. É a referência técnica da equipe, possuindo forte liderança e habilidades de mentoria.</p></article>
+          <article class="lvl-card"><div class="lvl-ico"><svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a2 2 0 012-2h2a2 2 0 012 2v2M3 13h18"/></svg></div><h3>Atuação</h3><p>Lidera projetos complexos de ponta a ponta, toma decisões de alto impacto e traduz os objetivos da empresa em soluções criativas e eficientes.</p></article>
+        </div>
+        <div class="lvl-skills reveal"><h3>Habilidades-chave</h3><ul><li>Estratégia</li><li>Liderança</li><li>Visão sistêmica</li><li>Pesquisa</li><li>Mentoria</li></ul></div>
+        <a class="lvl-next" href="#remuneracao">Ver remuneração →</a>
+      </div>
+    </section>
+
+    <section id="remuneracao" class="lvl alt" aria-label="Remuneração">
+      <div class="lvl-in">
+      <div class="salary reveal">
+        <div class="salary-copy"><span class="eyebrow">REMUNERAÇÃO</span><h2>Quanto ganha um designer?</h2><p>Os valores variam por especialidade, experiência, região, contrato e empresa. Clique para revelar cada faixa e ver a evolução profissional.</p><button id="salaryReveal" class="btn white">Revelar salários </button><small class="salary-source">Estimativas ilustrativas, não uma pesquisa salarial verificada. Os valores variam por região, especialidade, experiência e tipo de contrato; confira fontes atuais antes de tomar decisões.</small></div>
+        <div class="salary-reveal-area" id="salaryRevealArea" aria-live="polite">
+          <div class="cute-delivery" id="salaryDelivery"><div class="cute-robot" aria-hidden="true"><span class="antenna"></span><span class="robot-head"><i></i><i></i><b>⌣</b></span><span class="robot-body"><em></em><em></em></span></div><div class="confetti-bomb" aria-hidden="true"><svg viewBox="0 0 24 24" width="40" height="40" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M5 12v8h14v-8M12 8v12M12 8C9 8 7.5 6.8 7.5 5.5S9 3 10.5 4.5 12 8 12 8zM12 8c3 0 4.5-1.2 4.5-2.5S15 3 13.5 4.5 12 8 12 8z"/></svg></div><span>O robô está trazendo a resposta...</span></div>
+          <div class="salary-levels hidden" id="salaryLevels">
+            <article class="salary-level"><span>01</span><b>Júnior</b><strong>R$ 4 mil – R$ 6 mil</strong><small>Faixa de referência de salário-base.</small></article>
+            <article class="salary-level"><span>02</span><b>Pleno</b><strong>R$ 5 mil – R$ 8 mil</strong><small>Varia bastante conforme especialidade e empresa.</small></article>
+            <article class="salary-level"><span>03</span><b>Sênior</b><strong>R$ 8 mil – R$ 12 mil</strong><small>Faixa ilustrativa para UX sênior.</small></article>
+          </div>
+        </div>
+      </div>
+      </div>
+    </section>
+
+    <section id="cores" class="section">
+      <div class="heading reveal">
+        <span class="eyebrow">COLOR LAB</span>
+        <h2>Misture. Descubra. <span class="gradient">Experimente.</span></h2>
+        <p>Escolha duas cores, misture-as e descubra a cor resultante, seu HEX e associações. Aqui a mistura é feita com luz (média dos valores RGB), por isso o resultado pode diferir de misturar tintas.</p>
+      </div>
+
+      <div class="color-pickers">
+        <div class="picker"><label for="color1">COR 01</label><input id="color1" type="color" value="#7C3AED"><b id="hex1">#7C3AED</b></div>
+        <span class="plus">+</span>
+        <div class="picker"><label for="color2">COR 02</label><input id="color2" type="color" value="#F59E0B"><b id="hex2">#F59E0B</b></div>
+      </div>
+      <button class="btn primary center" id="mixBtn">Misturar cores</button>
+
+      <div class="result">
+        <div id="resultColor"></div>
+        <div class="result-info"><span class="eyebrow">RESULTADO</span><h2 id="resultName">Mistura</h2><p id="resultDesc"></p><div id="tags" class="tags"></div><button class="copy" id="copyHex">Copiar <b id="resultHex"></b></button></div>
+      </div>
+
+      <div class="heading smaller"><span class="eyebrow">PSICOLOGIA</span><h2>Significados das cores.</h2></div>
+      <div class="meaning-grid">
+        <article><i style="background:#EF4444"></i><h3>Vermelho</h3><p>Paixão, poder, força, fome, perigo e velocidade.</p></article>
+        <article><i style="background:#FACC15"></i><h3>Amarelo</h3><p>Felicidade, energia mental, criatividade, luz e frescura.</p></article>
+        <article><i style="background:#22C55E"></i><h3>Verde</h3><p>Natureza, renovação, esperança, bem-estar e dinheiro.</p></article>
+        <article><i style="background:#3B82F6"></i><h3>Azul</h3><p> Segurança, calma, inteligência, credibilidade e tecnologia.</p></article>
+        <article><i style="background:#8B5CF6"></i><h3>Roxo</h3><p>Realeza, espiritualidade, sofisticação, sabedoria e inovação.</p></article>
+        <article><i style="background:#EA580C"></i><h3>Vermelho-Alaranjado</h3><p>Energia, calor, vigor e entusiasmo.</p></article>
+        <article><i style="background:#F97316"></i><h3>Laranja</h3><p>Entusiasmo, criatividade, calor, juventude e amizade.</p></article>
+        <article><i style="background:#FFFFFF"></i><h3>Branco</h3><p>Pureza, limpeza, simplicidade, paz e verdade.</p></article>
+        <article><i style="background:#000000"></i><h3>Preto</h3><p> Luxo, elegância, poder, mistério e sofisticação intemporal.</p></article>
+
+
+      </div>
+    </section>
+
+    <section id="teoria" class="section tinted">
+      <div class="heading reveal"><span class="eyebrow">TEORIA DAS CORES</span><h2>Construa <span class="gradient">harmonias visuais.</span></h2><p>Entender as relações entre as cores ajuda a criar composições equilibradas e intencionais.</p></div>
+      <div class="theory">
+        <div>
+          <h2 id="harmonyTitle">Cores complementares</h2>
+          <p id="harmonyText">São cores posicionadas em lados opostos do círculo cromático. O contraste entre elas pode criar destaque e impacto visual.</p>
+          <div class="harmony-buttons">
+            <button class="active" data-harmony="complementar">Complementar</button>
+            <button data-harmony="analogas">Análogas</button>
+            <button data-harmony="triadica">Tríadica</button>
+            <button data-harmony="mono">Monocromática</button>
+          </div>
+        </div>
+        <div class="wheel" id="colorWheel" aria-label="Círculo cromático interativo"><div class="wheel-center">CLIQUE EM UMA COR</div></div>
+      </div>
+
+      <div class="color-theory-panel" aria-live="polite">
+        <div class="theory-prompt">Passe o mouse ou clique em uma cor do círculo para descobrir o significado.</div>
+        <div class="selected-color-visual" id="selectedColorVisual"></div>
+        <div><span class="eyebrow">COR SELECIONADA</span><h2 id="selectedColorName">Escolha uma cor</h2><p id="selectedColorMeaning">Cada cor pode comunicar sensações e associações diferentes dependendo do contexto.</p><div class="tags" id="selectedColorTags"></div></div>
+      </div>
+
+      <div class="palette" id="palette"><span></span><span></span><span></span></div>
+
+      <div class="ai-palettes" id="gerador">
+        <div class="ai-heading"><div><span class="eyebrow">GERADOR DE PALETAS</span><h2>Gere paletas por harmonia.</h2><p>Escolha o tipo de harmonia e, se quiser, uma cor base. Clique em qualquer cor para copiar o HEX, exporte em CSS ou salve suas favoritas.</p></div><button class="btn primary" id="generatePalettes" type="button">Gerar paletas</button></div>
+
+        <div class="pal-controls">
+          <div class="pal-types" role="group" aria-label="Tipo de paleta">
+            <button type="button" data-ptype="todas" aria-pressed="true">Todas</button>
+            <button type="button" data-ptype="mono" aria-pressed="false">Monocromática</button>
+            <button type="button" data-ptype="analoga" aria-pressed="false">Análoga</button>
+            <button type="button" data-ptype="complementar" aria-pressed="false">Complementar</button>
+            <button type="button" data-ptype="split" aria-pressed="false">Complementar dividida</button>
+            <button type="button" data-ptype="triade" aria-pressed="false">Tríade</button>
+            <button type="button" data-ptype="tetrade" aria-pressed="false">Tetrádica</button>
+            <button type="button" data-ptype="pastel" aria-pressed="false">Pastel</button>
+            <button type="button" data-ptype="quente" aria-pressed="false">Quente</button>
+            <button type="button" data-ptype="fria" aria-pressed="false">Fria</button>
+          </div>
+          <div class="pal-base">
+            <label for="baseColor">Cor base</label>
+            <input type="color" id="baseColor" value="#7C3AED">
+            <label class="pal-check"><input type="checkbox" id="useBase"> Usar minha cor</label>
+          </div>
+        </div>
+        <p class="pal-hint" id="palHint">Cada clique em “Gerar paletas” cria 6 combinações novas com cores aleatórias.</p>
+
+        <div class="pal-grid" id="aiPaletteGrid" aria-live="polite"></div>
+
+        <div class="pal-saved" id="palSaved" hidden>
+          <h3>Suas paletas salvas</h3>
+          <div class="pal-grid" id="palSavedGrid"></div>
+        </div>
+      </div>
+
+      <div class="contrast">
+        <div class="good">Boa legibilidade<small>Contraste adequado.</small></div>
+        <div class="bad">Baixa legibilidade<small>Contraste insuficiente.</small></div>
+      </div>
+    </section>
+
+    <section class="section" id="playground-live">
+      <div class="heading reveal">
+        <span class="eyebrow">PLAYGROUND</span>
+        <h2>Modifique o site <span class="gradient">em tempo real.</span></h2>
+        <p>Mude o tamanho, o peso e o espaçamento do texto e veja a página se adaptar na hora. É um jeito simples de entender como a tipografia afeta a leitura.</p>
+      </div>
+      <div class="cards three playground-controls">
+        <div class="card">
+          <label for="liveFontSize" style="font-size:12px;font-weight:700;color:var(--muted);">TAMANHO DO TEXTO: <span id="fontSizeVal">16</span>px</label>
+          <input type="range" id="liveFontSize" min="12" max="22" value="16" style="width:100%;margin-top:10px;accent-color:var(--purple);">
+        </div>
+        <div class="card">
+          <label for="liveFontWeight" style="font-size:12px;font-weight:700;color:var(--muted);">PESO DA FONTE: <span id="fontWeightVal">400</span></label>
+          <input type="range" id="liveFontWeight" min="300" max="700" step="100" value="400" style="width:100%;margin-top:10px;accent-color:var(--purple);">
+        </div>
+        <div class="card">
+          <label for="liveLetterSpacing" style="font-size:12px;font-weight:700;color:var(--muted);">ESPAÇAMENTO DE LETRAS: <span id="letterSpacingVal">0</span>px</label>
+          <input type="range" id="liveLetterSpacing" min="0" max="4" step="0.5" value="0" style="width:100%;margin-top:10px;accent-color:var(--purple);">
+        </div>
+      </div>
+
+      <div class="heading smaller" style="margin-top:50px;">
+        <span class="eyebrow">ADESIVOS</span>
+        <h2>Canvas <span class="gradient">interativo.</span></h2>
+        <p>Arraste os adesivos para qualquer lugar da área tracejada. No teclado, foque em um adesivo e use as setas (Shift move mais rápido).</p>
+      </div>
+      <div class="scratchpad-area" id="scratchpad" role="group" aria-label="Área para mover adesivos">
+        <div class="draggable-item" tabindex="0" role="button" aria-label="Adesivo UI Sticker. Arraste ou use as setas do teclado.">UI Sticker</div>
+        <div class="draggable-item" tabindex="0" role="button" aria-label="Adesivo Ideia Criativa. Arraste ou use as setas do teclado.">Ideia Criativa</div>
+        <div class="draggable-item" tabindex="0" role="button" aria-label="Adesivo Paleta Pro. Arraste ou use as setas do teclado.">Paleta Pro</div>
+        <div class="draggable-item" tabindex="0" role="button" aria-label="Adesivo Minimalismo. Arraste ou use as setas do teclado.">Minimalismo</div>
+      </div>
+      <div class="pad-actions"><button type="button" class="btn secondary" id="resetStickers">Reorganizar adesivos</button></div>
+      <div class="audio-control-bar">
+        <div>
+          <span class="eyebrow" style="margin-bottom:2px;">SOM</span>
+          <b style="font-size:14px;">Efeitos sonoros de interface</b>
+        </div>
+        <button id="toggleAudioBtn" class="btn secondary" type="button" aria-pressed="false" style="padding:8px 16px;font-size:13px;">Ligar sons de clique</button>
+      </div>
+    </section>
+
+    <section id="aprender" class="section">
+      <div class="heading reveal"><span class="eyebrow">APRENDA</span><h2>Checklist de um <span class="gradient">bom design.</span></h2><p>Marque os princípios que você verificaria ao analisar uma interface ou peça visual.</p></div>
+      <div class="learning">
+        <div id="checklist" class="checklist">
+          <label><input type="checkbox"><span><b>Hierarquia visual</b><small>O olhar identifica o que é mais importante?</small></span></label>
+          <label><input type="checkbox"><span><b>Contraste</b><small>Existe diferença suficiente entre elementos importantes?</small></span></label>
+          <label><input type="checkbox"><span><b>Tipografia</b><small>As fontes são legíveis e adequadas?</small></span></label>
+          <label><input type="checkbox"><span><b>Espaçamento</b><small>Os elementos têm espaço para respirar?</small></span></label>
+          <label><input type="checkbox"><span><b>Alinhamento</b><small>Existe uma estrutura visual clara?</small></span></label>
+          <label><input type="checkbox"><span><b>Consistência</b><small>Elementos semelhantes seguem o mesmo padrão?</small></span></label>
+          <label><input type="checkbox"><span><b>Acessibilidade</b><small>Diferentes pessoas conseguem usar?</small></span></label>
+          <label><input type="checkbox"><span><b>Responsividade</b><small>Funciona em diferentes tamanhos de tela?</small></span></label>
+        </div>
+        <aside class="progress-card"><span class="eyebrow">SEU PROGRESSO</span><strong id="checkCount">0/8</strong><div class="bar"><i id="checkBar"></i></div><p id="checkMsg">Comece analisando os princípios.</p></aside>
+      </div>
+    </section>
+
+    <section id="desafio" class="section tinted">
+      <div class="heading reveal"><span class="eyebrow">DESAFIO DO DESIGNER</span><h2>Você consegue decidir como um <span class="gradient">designer?</span></h2><p>Escolha a melhor solução para cada cenário e veja sua pontuação.</p></div>
+
+      <div class="quiz-top"><span id="qNumber">01 / 05</span><div class="qbar"><i id="qbar"></i></div><span id="score">0 pontos</span></div>
+      <div id="quiz" class="quiz">
+        <span class="eyebrow" id="qCategory">COR</span>
+        <h2 id="question"></h2>
+        <div id="answers" class="answers"></div>
+        <p id="qFeedback" class="q-feedback" role="status" aria-live="polite"></p>
+        <button class="btn primary" id="next" disabled>Próxima →</button>
+      </div>
+      <div id="quizResult" class="quiz-result hidden"><span style="color:var(--purple);display:block"><svg viewBox="0 0 24 24" width="56" height="56" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/><path d="M19 16l.7 1.8 1.8.7-1.8.7L19 21l-.7-1.8-1.8-.7 1.8-.7z"/></svg></span><h2 id="finalScore"></h2><p id="finalText"></p><button class="btn primary" id="restart">Refazer desafio</button></div>
+    </section>
+  <p class="site-credit">Projeto educacional sobre design, usabilidade e teoria das cores.</p>
+  </main>
+
+  <footer class="footer">
+    <div><a class="logo" href="#inicio"><span class="crown">♛</span><span>ENTRE FORMAS</span></a><p>Aprenda. Crie. Transforme.</p></div>
+    <small>Projeto educacional sobre Design e Usabilidade. <button id="easterEggTrigger" type="button" aria-label="Descobrir um segredo" style="cursor:pointer;color:var(--purple);background:none;border:0;font-size:inherit;vertical-align:middle"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/><path d="M19 16l.7 1.8 1.8.7-1.8.7L19 21l-.7-1.8-1.8-.7 1.8-.7z"/></svg></button></small>
+  </footer>
+
+    <!-- PIXEL — robô companheiro -->
+    <div id="pixel" class="pixel" data-mood="happy" data-act="" hidden>
+      <div id="pixelBubble" class="pixel-bubble" role="status" aria-live="polite" hidden>
+        <button type="button" id="pixelClose" class="pixel-x" aria-label="Fechar mensagem do Pixel">×</button>
+        <p id="pixelText"></p>
+        <form id="pixelNameForm" class="pixel-form" hidden>
+          <label class="sr-only" for="pixelName">Seu nome</label>
+          <input id="pixelName" type="text" maxlength="20" autocomplete="given-name" placeholder="Seu nome">
+          <button type="submit" class="pixel-btn primary">Salvar</button>
+        </form>
+        <div id="pixelActions" class="pixel-actions"></div>
+      </div>
+      <button type="button" id="pixelBtn" class="pixel-bot" aria-label="Pixel, o robô assistente. Clique para abrir o menu" aria-expanded="false" aria-controls="pixelBubble">
+        <svg viewBox="0 0 120 140" aria-hidden="true" focusable="false">
+          <defs>
+            <linearGradient id="pxHead" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#d8b4fe"/><stop offset="1" stop-color="#7c3aed"/></linearGradient>
+            <linearGradient id="pxBody" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#a855f7"/><stop offset="1" stop-color="#6d28d9"/></linearGradient>
+          </defs>
+          <ellipse cx="60" cy="135" rx="28" ry="5" fill="#000" opacity=".16"/>
+          <!-- antena -->
+          <line x1="60" y1="21" x2="60" y2="9" stroke="#e9d5ff" stroke-width="4" stroke-linecap="round"/>
+          <circle class="px-bulb" cx="60" cy="7" r="6" fill="#f0abfc" stroke="#fdf4ff" stroke-width="2"/>
+          <!-- braços -->
+          <g class="px-arm-l"><rect x="22" y="84" width="11" height="28" rx="5.5" fill="#8b5cf6" stroke="#ddd6fe" stroke-width="2.5"/></g>
+          <g class="px-arm-r"><rect x="87" y="84" width="11" height="28" rx="5.5" fill="#8b5cf6" stroke="#ddd6fe" stroke-width="2.5"/></g>
+          <!-- pés -->
+          <ellipse cx="46" cy="126" rx="11" ry="6.5" fill="#6d28d9" stroke="#ddd6fe" stroke-width="2.5"/>
+          <ellipse cx="74" cy="126" rx="11" ry="6.5" fill="#6d28d9" stroke="#ddd6fe" stroke-width="2.5"/>
+          <!-- corpo + coração -->
+          <rect x="35" y="76" width="50" height="46" rx="18" fill="url(#pxBody)" stroke="#e9d5ff" stroke-width="3"/>
+          <path d="M60 109C52 104 51 98 55 96C57.5 94.8 59.3 96 60 97.5C60.7 96 62.5 94.8 65 96C69 98 68 104 60 109Z" fill="#f9a8d4"/>
+          <!-- cabeça -->
+          <rect x="11" y="38" width="9" height="22" rx="4.5" fill="#8b5cf6" stroke="#ddd6fe" stroke-width="2.5"/>
+          <rect x="100" y="38" width="9" height="22" rx="4.5" fill="#8b5cf6" stroke="#ddd6fe" stroke-width="2.5"/>
+          <rect x="19" y="20" width="82" height="58" rx="26" fill="url(#pxHead)" stroke="#e9d5ff" stroke-width="3.5"/>
+          <rect x="28" y="30" width="64" height="38" rx="17" fill="#1b0f2e" opacity=".96"/>
+          <!-- olhos -->
+          <g class="px-eyes">
+            <g class="px-eye"><ellipse cx="47" cy="47" rx="5.5" ry="7" fill="#a5f3fc"/><circle cx="49" cy="44" r="1.9" fill="#fff"/></g>
+            <g class="px-eye"><ellipse cx="73" cy="47" rx="5.5" ry="7" fill="#a5f3fc"/><circle cx="75" cy="44" r="1.9" fill="#fff"/></g>
+          </g>
+          <!-- bochechas e boca -->
+          <circle cx="38" cy="58" r="4" fill="#f9a8d4" opacity=".6"/>
+          <circle cx="82" cy="58" r="4" fill="#f9a8d4" opacity=".6"/>
+          <path class="px-smile" d="M54 58Q60 64 66 58" fill="none" stroke="#f5d0fe" stroke-width="2.8" stroke-linecap="round"/>
+          <ellipse class="px-m-open" cx="60" cy="59.5" rx="4.5" ry="3.8" fill="#f5d0fe"/>
+          <ellipse class="px-m-wow" cx="60" cy="60" rx="3.6" ry="4.8" fill="#f5d0fe"/>
+          <!-- zzz -->
+          <g class="px-z" font-family="Poppins,Arial,sans-serif" font-weight="700" fill="#c084fc">
+            <text x="96" y="24" font-size="13">z</text>
+            <text x="105" y="12" font-size="10">z</text>
+          </g>
+        </svg>
+      </button>
+    </div>
+
+  <div id="modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><div class="modal-box"><button id="closeModal" type="button" aria-label="Fechar">×</button><span class="eyebrow" id="modalEyebrow">SAIBA MAIS</span><h2 id="modalTitle"></h2><p id="modalText"></p></div></div>
+  <div id="toast" class="toast"></div>
+
+  <script>
+document.addEventListener("DOMContentLoaded",()=>{
+  const root=document.documentElement;
+  let saved=null;try{saved=localStorage.getItem("design-theme")}catch(e){}
+  if(saved) root.dataset.theme=saved;
+  const theme=document.getElementById("themeBtn");
+  const ICON_SUN='<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>',ICON_MOON='<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8.5 8.5 0 019.5 4 8.5 8.5 0 1020 14.5z"/></svg>';
+  function icon(){theme.innerHTML=root.dataset.theme==="dark"?ICON_SUN:ICON_MOON}
+  icon();
+  theme.onclick=()=>{root.dataset.theme=root.dataset.theme==="dark"?"light":"dark";try{localStorage.setItem("design-theme",root.dataset.theme)}catch{}icon();theme.setAttribute("aria-label",root.dataset.theme==="dark"?"Ativar tema claro":"Ativar tema escuro")};
+
+  document.getElementById("menuBtn").onclick=()=>{const nav=document.getElementById("nav");nav.classList.toggle("open");document.getElementById("menuBtn").setAttribute("aria-expanded",String(nav.classList.contains("open")))};
+  document.querySelectorAll("#nav a").forEach(a=>a.onclick=()=>{document.getElementById("nav").classList.remove("open");document.getElementById("menuBtn").setAttribute("aria-expanded","false")});
+  document.addEventListener("keydown",event=>{if(event.key==="Escape"){const nav=document.getElementById("nav");nav.classList.remove("open");document.getElementById("menuBtn").setAttribute("aria-expanded","false");}});
+  const loader=document.querySelector(".loader");
+  window.addEventListener("load",()=>setTimeout(()=>loader.classList.add("hide"),250));
+  const observer=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add("visible")}),{threshold:.1});
+  document.querySelectorAll(".reveal").forEach(x=>observer.observe(x));
+  const toast=document.getElementById("toast");
+  function showToast(msg){toast.textContent=msg;toast.classList.add("show");clearTimeout(window.tt);window.tt=setTimeout(()=>toast.classList.remove("show"),2200)}
+
+  // 1. Modificador Live de Tipografia Completo
+  function applyTextScale(v){
+    const k=v/16;
+    document.querySelectorAll('main p, main small, .checklist b, .footer p, .footer small').forEach(el=>{
+      if(k===1){el.style.fontSize='';delete el.dataset.fs;return}
+      if(!el.dataset.fs)el.dataset.fs=parseFloat(getComputedStyle(el).fontSize);
+      el.style.fontSize=(el.dataset.fs*k).toFixed(2)+'px';
+    });
+  }
+  const fontSizeRange = document.getElementById('liveFontSize');
+  const fontSizeVal = document.getElementById('fontSizeVal');
+  const fontWeightRange = document.getElementById('liveFontWeight');
+  const fontWeightVal = document.getElementById('fontWeightVal');
+  const letterSpacingRange = document.getElementById('liveLetterSpacing');
+  const letterSpacingVal = document.getElementById('letterSpacingVal');
+
+  if(fontSizeRange) {
+    fontSizeRange.oninput = (e) => {
+      fontSizeVal.textContent = e.target.value;
+      document.documentElement.style.setProperty('--live-font-size', e.target.value + 'px');
+      applyTextScale(+e.target.value);
+    };
+  }
+  if(fontWeightRange) {
+    fontWeightRange.oninput = (e) => {
+      fontWeightVal.textContent = e.target.value;
+      document.documentElement.style.setProperty('--live-font-weight', e.target.value);
+    };
+  }
+  if(letterSpacingRange) {
+    letterSpacingRange.oninput = (e) => {
+      letterSpacingVal.textContent = e.target.value;
+      document.documentElement.style.setProperty('--live-letter-spacing', e.target.value + 'px');
+    };
+  }
+
+  // 1. Canvas interativo: arraste livre (mouse, toque) e teclado
+  const scratchpad = document.getElementById("scratchpad");
+  const stickers = [...scratchpad.querySelectorAll(".draggable-item")];
+  let stickerToast = false;
+  function layoutStickers(){
+    const w = scratchpad.clientWidth, h = scratchpad.clientHeight;
+    const cols = w < 520 ? 2 : 4;
+    stickers.forEach((it, i) => {
+      const cw = w / cols;
+      const x = (i % cols) * cw + Math.max(8, (cw - it.offsetWidth) / 2);
+      const y = 28 + Math.floor(i / cols) * 74 + (i % 2) * 14;
+      it.style.left = Math.min(x, w - it.offsetWidth - 6) + "px";
+      it.style.top = Math.min(y, h - it.offsetHeight - 6) + "px";
+    });
+  }
+  function moveSticker(it, x, y){
+    const w = scratchpad.clientWidth - it.offsetWidth, h = scratchpad.clientHeight - it.offsetHeight;
+    it.style.left = Math.max(0, Math.min(w, x)) + "px";
+    it.style.top = Math.max(0, Math.min(h, y)) + "px";
+  }
+  stickers.forEach(it => {
+    let ox = 0, oy = 0, active = false;
+    it.addEventListener("pointerdown", e => {
+      active = true; it.setPointerCapture(e.pointerId); it.classList.add("dragging");
+      ox = e.clientX - it.offsetLeft; oy = e.clientY - it.offsetTop; e.preventDefault();
+    });
+    it.addEventListener("pointermove", e => { if(active) moveSticker(it, e.clientX - ox, e.clientY - oy); });
+    const end = e => {
+      if(!active) return; active = false; it.classList.remove("dragging");
+      if(!stickerToast){ stickerToast = true; showToast("Adesivo reposicionado!"); }
+    };
+    it.addEventListener("pointerup", end); it.addEventListener("pointercancel", end);
+    it.addEventListener("keydown", e => {
+      const step = e.shiftKey ? 36 : 12;
+      const d = {ArrowLeft:[-step,0], ArrowRight:[step,0], ArrowUp:[0,-step], ArrowDown:[0,step]}[e.key];
+      if(d){ e.preventDefault(); moveSticker(it, it.offsetLeft + d[0], it.offsetTop + d[1]); }
+    });
+  });
+  layoutStickers();
+  window.addEventListener("resize", layoutStickers);
+  document.getElementById("resetStickers").onclick = () => { layoutStickers(); showToast("Adesivos reorganizados."); };
+
+  // 2. Inclinação suave dos cards (somente com mouse e sem "reduzir movimento")
+  if(matchMedia("(hover: hover) and (pointer: fine)").matches && !matchMedia("(prefers-reduced-motion: reduce)").matches){
+    document.querySelectorAll(".cards .card").forEach(card => {
+      card.addEventListener("mousemove", (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left - rect.width/2;
+        const y = e.clientY - rect.top - rect.height/2;
+        card.style.transform = `translateY(-5px) rotateX(${(-y/32).toFixed(2)}deg) rotateY(${(x/32).toFixed(2)}deg)`;
+      });
+      card.addEventListener("mouseleave", () => { card.style.transform = ""; });
+    });
+  }
+
+  // 4. Efeitos Sonoros Opcionais (UI Sound Design via Web Audio API)
+  let audioEnabled = false;
+  const toggleAudioBtn = document.getElementById("toggleAudioBtn");
+  toggleAudioBtn.onclick = () => {
+    audioEnabled = !audioEnabled;
+    toggleAudioBtn.textContent = audioEnabled ? "Sons ativados" : "Ligar sons de clique";
+    toggleAudioBtn.setAttribute("aria-pressed", String(audioEnabled));
+    showToast(audioEnabled ? "Efeitos sonoros ligados!" : "Efeitos sonoros desligados.");
+  };
+
+  let audioCtx = null;
+  function playClickSound() {
+    if(!audioEnabled) return;
+    try {
+      audioCtx = audioCtx || new (window.AudioContext || window.webkitAudioContext)();
+      if(audioCtx.state === "suspended") audioCtx.resume();
+      const ctx = audioCtx, osc = ctx.createOscillator(), gain = ctx.createGain();
+      osc.type = "sine";
+      osc.frequency.setValueAtTime(580, ctx.currentTime);
+      osc.frequency.exponentialRampToValueAtTime(800, ctx.currentTime + 0.08);
+      gain.gain.setValueAtTime(0.08, ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.08);
+      osc.connect(gain); gain.connect(ctx.destination);
+      osc.start(); osc.stop(ctx.currentTime + 0.08);
+    } catch(e) {}
+  }
+  document.addEventListener("click", e => { if(e.target.closest("button, a")) playClickSound(); });
+
+  // 5. Estante de Conquistas / Easter Eggs
+  document.getElementById("easterEggTrigger").onclick = () => {
+    showToast("Easter Egg desbloqueado! Você encontrou o segredo do design interativo.");
+  };
+
+  const modalEl = document.getElementById("modal");
+  let lastFocus = null;
+  function closeModal(){ modalEl.classList.remove("open"); if(lastFocus) lastFocus.focus(); }
+  document.querySelectorAll(".more").forEach(btn => btn.onclick = () => {
+    lastFocus = btn;
+    document.getElementById("modalEyebrow").textContent = btn.dataset.eyebrow || "SAIBA MAIS";
+    document.getElementById("modalTitle").textContent = btn.dataset.title;
+    document.getElementById("modalText").textContent = btn.dataset.text;
+    modalEl.classList.add("open");
+    document.getElementById("closeModal").focus();
+  });
+  document.getElementById("closeModal").onclick = closeModal;
+  modalEl.onclick = e => { if(e.target === modalEl) closeModal(); };
+  document.addEventListener("keydown", e => {
+    if(!modalEl.classList.contains("open")) return;
+    if(e.key === "Escape") closeModal();
+    if(e.key === "Tab"){ e.preventDefault(); document.getElementById("closeModal").focus(); }
+  });
+
+
+  // Salários
+  const salaryBtn=document.getElementById("salaryReveal"),delivery=document.getElementById("salaryDelivery"),salaryLevels=document.getElementById("salaryLevels");
+  let salaryTimers=[];
+  salaryBtn.onclick=()=>{
+    salaryTimers.forEach(clearTimeout);salaryTimers=[];
+    salaryBtn.disabled=true;
+    salaryBtn.textContent="Preparando a revelação...";
+    salaryLevels.classList.add("hidden");
+    salaryLevels.classList.remove("reveal-salary");
+    delivery.classList.remove("hidden","open");
+    salaryTimers.push(setTimeout(()=>delivery.classList.add("open"),850));
+    salaryTimers.push(setTimeout(()=>{
+      delivery.classList.add("hidden");
+      salaryLevels.classList.remove("hidden");
+      salaryLevels.classList.add("reveal-salary");
+      salaryBtn.textContent="Revelar novamente";
+      salaryBtn.disabled=false;
+    },1700));
+  };
+
+  // Color Lab
+  const c1=document.getElementById("color1"),c2=document.getElementById("color2");
+  const rgb=h=>({r:parseInt(h.slice(1,3),16),g:parseInt(h.slice(3,5),16),b:parseInt(h.slice(5,7),16)});
+  const hex=(r,g,b)=>"#"+[r,g,b].map(x=>Math.round(x).toString(16).padStart(2,"0")).join("").toUpperCase();
+  function mix(){
+    const a=rgb(c1.value),b=rgb(c2.value),r=(a.r+b.r)/2,g=(a.g+b.g)/2,bl=(a.b+b.b)/2,h=hex(r,g,bl);
+    const options=[["Vermelho","#ef4444","energia","paixão","intensidade"],["Laranja","#f97316","entusiasmo","criatividade","movimento"],["Amarelo","#f59e0b","alegria","atenção","criatividade"],["Verde","#22c55e","natureza","crescimento","equilíbrio"],["Ciano","#06b6d4","frescor","clareza","tecnologia"],["Azul","#3b82f6","confiança","segurança","tranquilidade"],["Roxo","#8b5cf6","criatividade","imaginação","sofisticação"],["Rosa","#ec4899","afeto","cuidado","expressão"]];
+    let best=options[0],dist=Infinity;options.forEach(o=>{const z=rgb(o[1]),d=(r-z.r)**2+(g-z.g)**2+(bl-z.b)**2;if(d<dist){dist=d;best=o}});
+    document.getElementById("resultColor").style.background=h;document.getElementById("resultHex").textContent=h;document.getElementById("hex1").textContent=c1.value.toUpperCase();document.getElementById("hex2").textContent=c2.value.toUpperCase();document.getElementById("resultName").textContent=best[0];document.getElementById("resultDesc").textContent=`A mistura resultou em ${h}. Uma associação possível para essa cor é ${best[2]}, ${best[3]} e ${best[4]}; a percepção depende do contexto e da cultura.`;document.getElementById("tags").innerHTML=`<span>${best[2]}</span><span>${best[3]}</span><span>${best[4]}</span>`;
+  }
+  c1.oninput=mix;c2.oninput=mix;document.getElementById("mixBtn").onclick=()=>{mix();showToast("Nova mistura criada!")};mix();
+  document.getElementById("copyHex").onclick=async()=>{const h=document.getElementById("resultHex").textContent;try{await navigator.clipboard.writeText(h);showToast("HEX copiado!")}catch{showToast(h)}};
+
+  // Círculo cromático e teoria
+  const colors={
+    vermelho:{name:"Vermelho",hex:"#EF4444",meaning:"Comunica energia, atenção, intensidade e ação.",tags:["energia","atenção","intensidade"]},
+    laranja:{name:"Laranja",hex:"#F97316",meaning:"Transmite entusiasmo, criatividade e movimento.",tags:["criatividade","entusiasmo","movimento"]},
+    amarelo:{name:"Amarelo",hex:"#F59E0B",meaning:"Associado a alegria, luz e atenção.",tags:["alegria","atenção","criatividade"]},
+    verde:{name:"Verde",hex:"#22C55E",meaning:"Comunica natureza, crescimento e equilíbrio.",tags:["natureza","crescimento","equilíbrio"]},
+    ciano:{name:"Ciano",hex:"#06B6D4",meaning:"Traz frescor, clareza e tecnologia.",tags:["frescor","clareza","tecnologia"]},
+    azul:{name:"Azul",hex:"#3B82F6",meaning:"Utilizado para transmitir confiança e segurança.",tags:["confiança","segurança","calma"]},
+    roxo:{name:"Roxo",hex:"#8B5CF6",meaning:"Sugere criatividade, imaginação e sofisticação.",tags:["criatividade","imaginação","sofisticação"]},
+    rosa:{name:"Rosa",hex:"#EC4899",meaning:"Comunica afeto, cuidado e expressão.",tags:["afeto","cuidado","expressão"]}
+  };
+  const wheel=document.getElementById("colorWheel");
+  Object.entries(colors).forEach(([key,c],i)=>{const dot=document.createElement("button");dot.type="button";dot.className="color-dot";dot.dataset.color=key;dot.title=c.name;dot.setAttribute("aria-label",`Ver significado de ${c.name}`);dot.style.setProperty("--dot-color",c.hex);dot.style.setProperty("--angle",`${i*45-90}deg`);dot.addEventListener("mouseenter",()=>selectColor(key));dot.addEventListener("focus",()=>selectColor(key));dot.addEventListener("click",()=>selectColor(key));wheel.appendChild(dot)});
+  function selectColor(key){const c=colors[key];document.getElementById("selectedColorVisual").style.background=c.hex;document.getElementById("selectedColorName").textContent=c.name;document.getElementById("selectedColorMeaning").textContent=c.meaning;document.getElementById("selectedColorTags").innerHTML=c.tags.map(t=>`<span>${t}</span>`).join("");document.querySelectorAll(".color-dot").forEach(d=>d.classList.toggle("selected",d.dataset.color===key))}
+  selectColor("roxo");
+
+  const hexToHsl = h => {
+    let {r,g,b} = rgb(h); r/=255; g/=255; b/=255;
+    const mx = Math.max(r,g,b), mn = Math.min(r,g,b), d = mx - mn, L = (mx + mn) / 2;
+    let H = 0, S = 0;
+    if(d){
+      S = d / (1 - Math.abs(2*L - 1));
+      if(mx === r) H = ((g - b) / d) % 6; else if(mx === g) H = (b - r) / d + 2; else H = (r - g) / d + 4;
+      H *= 60; if(H < 0) H += 360;
+    }
+    return [H, S*100, L*100];
+  };
+  const hslToHex = (h, s, l) => {
+    h = ((h % 360) + 360) % 360; s /= 100; l /= 100;
+    const k = n => (n + h/30) % 12, a = s * Math.min(l, 1 - l);
+    const f = n => l - a * Math.max(-1, Math.min(k(n) - 3, Math.min(9 - k(n), 1)));
+    return hex(f(0)*255, f(8)*255, f(4)*255);
+  };
+  const luminance = h => { const c = rgb(h); return (0.299*c.r + 0.587*c.g + 0.114*c.b) / 255; };
+  const harmonyDefs = {
+    complementar: {title:"Cores complementares", text:"Ficam em lados opostos do círculo cromático (180°). O contraste entre elas cria destaque e impacto.", make:(H,S,L)=>[[H,S,L],[H+180,S,L],[H+180,S,Math.min(88,L+22)]]},
+    analogas: {title:"Cores análogas", text:"São vizinhas no círculo (cerca de 30° de distância). Criam composições suaves e harmoniosas.", make:(H,S,L)=>[[H-30,S,L],[H,S,L],[H+30,S,L]]},
+    triadica: {title:"Harmonia tríadica", text:"Três cores equidistantes (120°). Trazem variedade mantendo o equilíbrio.", make:(H,S,L)=>[[H,S,L],[H+120,S,L],[H+240,S,L]]},
+    mono: {title:"Harmonia monocromática", text:"Variações de claridade de uma mesma cor. É coesa e fácil de aplicar.", make:(H,S,L)=>[[H,S,Math.min(92,L+30)],[H,S,L],[H,S,Math.max(18,L-22)]]}
+  };
+  let currentHarmony = "complementar", currentColorKey = "roxo";
+  function harmony(key){
+    currentHarmony = key;
+    const d = harmonyDefs[key], c = colors[currentColorKey], hsl = hexToHsl(c.hex);
+    const cols = d.make(hsl[0], hsl[1], hsl[2]).map(x => hslToHex(x[0], x[1], x[2]));
+    document.getElementById("harmonyTitle").textContent = d.title;
+    document.getElementById("harmonyText").textContent = d.text + " Cor-base: " + c.name + ".";
+    [...document.querySelectorAll("#palette span")].forEach((sp, i) => {
+      sp.style.background = cols[i]; sp.textContent = cols[i]; sp.title = cols[i];
+      sp.style.color = luminance(cols[i]) > 0.62 ? "#1b1326" : "#fff";
+    });
+    document.querySelectorAll(".harmony-buttons button").forEach(b => {
+      const on = b.dataset.harmony === key; b.classList.toggle("active", on); b.setAttribute("aria-pressed", String(on));
+    });
+  }
+  document.querySelectorAll(".harmony-buttons button").forEach(b => b.onclick = () => harmony(b.dataset.harmony));
+  const pickDot = e => { const d = e.target.closest(".color-dot"); if(d){ currentColorKey = d.dataset.color; harmony(currentHarmony); } };
+  wheel.addEventListener("click", pickDot);
+  wheel.addEventListener("mouseover", pickDot);
+  harmony("complementar");
+
+  // ===== Gerador de paletas por harmonia =====
+  const palGrid = document.getElementById("aiPaletteGrid");
+  const palSavedBox = document.getElementById("palSaved");
+  const palSavedGrid = document.getElementById("palSavedGrid");
+  const baseInput = document.getElementById("baseColor");
+  const useBase = document.getElementById("useBase");
+  const palHint = document.getElementById("palHint");
+  const rnd = (a, b) => a + Math.random() * (b - a);
+  const clampN = (v, a, b) => Math.max(a, Math.min(b, v));
+  const typeLabels = {mono:"Monocromática", analoga:"Análoga", complementar:"Complementar", split:"Complementar dividida", triade:"Tríade", tetrade:"Tetrádica", pastel:"Pastel", quente:"Quente", fria:"Fria"};
+  const mixable = ["mono","analoga","complementar","split","triade","tetrade","pastel"];
+  const hueNames = [[15,"Vermelho"],[40,"Laranja"],[70,"Amarelo"],[160,"Verde"],[200,"Ciano"],[255,"Azul"],[290,"Roxo"],[335,"Rosa"],[361,"Vermelho"]];
+  const hueName = h => { h = ((h % 360) + 360) % 360; for(const p of hueNames) if(h < p[0]) return p[1]; return "Vermelho"; };
+  let palType = "todas";
+
+  function pickBase(){
+    if(useBase.checked){ const x = hexToHsl(baseInput.value); return [x[0], clampN(x[1], 28, 95), clampN(x[2], 34, 60)]; }
+    return [rnd(0, 360), rnd(55, 88), rnd(42, 58)];
+  }
+  function buildColors(type, base){
+    const H = base[0], S = base[1], L = base[2];
+    let c;
+    switch(type){
+      case "mono":
+        c = [[H,S*0.9,rnd(14,22)],[H,S,rnd(30,38)],[H,S,L],[H,S*0.8,rnd(66,74)],[H,S*0.55,rnd(88,93)]]; break;
+      case "analoga":
+        c = [[H-50,S,L-6],[H-25,S,L+4],[H,S,L],[H+25,S,L+8],[H+50,S,L-4]]; break;
+      case "complementar":
+        c = [[H,S,24],[H,S,L],[H,S*0.55,88],[H+180,S*0.8,78],[H+180,S,L]]; break;
+      case "split":
+        c = [[H,S,L],[H+150,S,L+4],[H+210,S,L-4],[H,S*0.45,90],[H,S*0.7,20]]; break;
+      case "triade":
+        c = [[H,S,L],[H+120,S,L],[H+240,S,L],[H+120,S*0.5,88],[H+240,S*0.7,24]]; break;
+      case "tetrade":
+        c = [[H,S,L],[H+90,S,L],[H+180,S,L],[H+270,S,L],[H,S*0.3,93]]; break;
+      case "pastel": {
+        const ps = rnd(55, 78);
+        c = [-60,-30,0,40,80].map(o => [H+o, ps, rnd(82,90)]); break; }
+      case "quente": {
+        const h0 = rnd(350, 385), ls = [28,44,55,64,80];
+        c = ls.map((l, i) => [h0 + i*(Math.min(60, 420 - h0) / 4), rnd(70,92), l]); break; }
+      default: { // fria
+        const h0 = rnd(172, 228), ls = [24,38,50,64,82];
+        c = ls.map((l, i) => [h0 + i*15, rnd(55,85), l]);
+      }
+    }
+    c = c.map(x => [x[0], clampN(x[1], 8, 98), clampN(x[2], 8, 95)]);
+    if(type === "mono") c.sort((a, b) => a[2] - b[2]);
+    return c.map(x => hslToHex(x[0], x[1], x[2]));
+  }
+  function makePalette(type){
+    const base = pickBase();
+    const baseHue = type === "quente" ? 20 : type === "fria" ? 200 : base[0];
+    return {type, name: typeLabels[type] + " · " + hueName(baseHue), colors: buildColors(type, base)};
+  }
+  function generatePalettes(){
+    let types;
+    if(palType === "todas"){
+      types = mixable.slice().sort(() => Math.random() - 0.5).slice(0, 6);
+    } else { types = Array(6).fill(palType); }
+    return types.map(makePalette);
+  }
+
+  // salvas (localStorage, com validação)
+  const SAVE_KEY = "design-saved-palettes";
+  const hexOk = c => typeof c === "string" && /^#[0-9A-Fa-f]{6}$/.test(c);
+  let savedPalettes = [];
+  try {
+    const raw = JSON.parse(localStorage.getItem(SAVE_KEY) || "[]");
+    if(Array.isArray(raw)) savedPalettes = raw.filter(p => p && typeof p.name === "string" && Array.isArray(p.colors) && p.colors.length === 5 && p.colors.every(hexOk)).slice(0, 12);
+  } catch(e) { savedPalettes = []; }
+  const persist = () => { try { localStorage.setItem(SAVE_KEY, JSON.stringify(savedPalettes)); } catch(e) {} };
+  const keyOf = p => p.colors.join(",");
+  const isSaved = p => savedPalettes.some(x => keyOf(x) === keyOf(p));
+
+  async function copyText(text, msg){
+    try { await navigator.clipboard.writeText(text); showToast(msg || ("Copiado: " + text)); }
+    catch(e) { showToast(text); }
+  }
+  const toCss = p => ":root{\n" + p.colors.map((c, i) => "  --cor-" + (i + 1) + ": " + c + ";").join("\n") + "\n}";
+
+  function paletteCard(p, saved){
+    const art = document.createElement("article");
+    art.className = "pal-card";
+    const sw = p.colors.map(c => '<button type="button" class="pal-sw" style="background:' + c + ';color:' + (luminance(c) > 0.62 ? "#1b1326" : "#fff") + '" data-hex="' + c + '" aria-label="Copiar cor ' + c + '">' + c + '</button>').join("");
+    art.innerHTML = '<div class="pal-swatches">' + sw + '</div>' +
+      '<div class="pal-meta"><div class="pal-name"><b></b><small>5 cores</small></div><div class="pal-actions">' +
+      '<button type="button" data-act="copy">Copiar HEX</button>' +
+      '<button type="button" data-act="css">CSS</button>' +
+      (saved ? '<button type="button" data-act="remove">Remover</button>'
+             : '<button type="button" data-act="save" aria-pressed="' + isSaved(p) + '">' + (isSaved(p) ? "Salva" : "Salvar") + '</button>') +
+      '</div></div>';
+    art.querySelector("b").textContent = p.name;
+    art._p = p;
+    return art;
+  }
+  function renderSaved(){
+    palSavedGrid.innerHTML = "";
+    savedPalettes.forEach(p => palSavedGrid.appendChild(paletteCard(p, true)));
+    palSavedBox.hidden = savedPalettes.length === 0;
+  }
+  function renderPalettes(){
+    palGrid.innerHTML = "";
+    generatePalettes().forEach(p => palGrid.appendChild(paletteCard(p, false)));
+  }
+  function onPaletteClick(e){
+    const btn = e.target.closest("button");
+    if(!btn) return;
+    const card = btn.closest(".pal-card");
+    if(!card) return;
+    const p = card._p;
+    if(btn.dataset.hex){ copyText(btn.dataset.hex, "HEX copiado: " + btn.dataset.hex); return; }
+    const act = btn.dataset.act;
+    if(act === "copy") copyText(p.colors.join(", "), "Códigos HEX copiados!");
+    else if(act === "css") copyText(toCss(p), "CSS copiado! Cole no seu projeto.");
+    else if(act === "save"){
+      if(isSaved(p)){ savedPalettes = savedPalettes.filter(x => keyOf(x) !== keyOf(p)); showToast("Paleta removida das salvas."); }
+      else if(savedPalettes.length >= 12){ showToast("Limite de 12 paletas salvas. Remova alguma antes."); return; }
+      else { savedPalettes.unshift({name: p.name, colors: p.colors.slice()}); showToast("Paleta salva!"); }
+      persist(); renderSaved();
+      const on = isSaved(p);
+      btn.setAttribute("aria-pressed", String(on)); btn.textContent = on ? "Salva" : "Salvar";
+    }
+    else if(act === "remove"){
+      savedPalettes = savedPalettes.filter(x => keyOf(x) !== keyOf(p));
+      persist(); renderSaved(); showToast("Paleta removida.");
+      palGrid.querySelectorAll(".pal-card").forEach(cd => {
+        const b = cd.querySelector('[data-act="save"]');
+        if(b && !isSaved(cd._p)){ b.setAttribute("aria-pressed", "false"); b.textContent = "Salvar"; }
+      });
+    }
+  }
+  palGrid.addEventListener("click", onPaletteClick);
+  palSavedGrid.addEventListener("click", onPaletteClick);
+
+  document.querySelectorAll(".pal-types button").forEach(b => b.addEventListener("click", () => {
+    palType = b.dataset.ptype;
+    document.querySelectorAll(".pal-types button").forEach(x => x.setAttribute("aria-pressed", String(x === b)));
+    updateHint(); renderPalettes();
+  }));
+  function updateHint(){
+    const warm = palType === "quente" || palType === "fria";
+    palHint.textContent = warm ? "Paletas quentes e frias usam sua própria faixa de matizes, então a cor base não é aplicada."
+      : useBase.checked ? "Gerando variações a partir da sua cor base. Clique em “Gerar paletas” para novas combinações."
+      : "Cada clique em “Gerar paletas” cria 6 combinações novas com cores aleatórias.";
+  }
+  baseInput.addEventListener("input", () => { useBase.checked = true; updateHint(); renderPalettes(); });
+  useBase.addEventListener("change", () => { updateHint(); renderPalettes(); });
+  document.getElementById("generatePalettes").onclick = () => { renderPalettes(); showToast("Paletas atualizadas!"); };
+  renderSaved(); renderPalettes();
+
+  // Checklist
+  const checks=[...document.querySelectorAll("#checklist input")];
+  let savedChecks=[];
+  try{savedChecks=JSON.parse(localStorage.getItem("design-checks")||"[]");if(!Array.isArray(savedChecks))savedChecks=[];}catch{savedChecks=[];}savedChecks.forEach((v,i)=>{if(checks[i])checks[i].checked=v});
+  function updateChecks(){const n=checks.filter(x=>x.checked).length;document.getElementById("checkCount").textContent=`${n}/8`;document.getElementById("checkBar").style.width=`${n/8*100}%`;document.getElementById("checkMsg").textContent=n===0?"Comece analisando os princípios.":n<4?"Você já começou. Continue!":n<8?"Boa! Seu olhar de designer está evoluindo.":"Checklist completo!";localStorage.setItem("design-checks",JSON.stringify(checks.map(x=>x.checked)))}
+  checks.forEach(x=>x.onchange=updateChecks);updateChecks();
+
+  // Quiz
+  const qs=[
+    ["COR","Você está criando a identidade de uma marca de tecnologia que quer transmitir confiança. Qual direção cromática tende a comunicar melhor essa intenção?",["Azul e tons próximos","Vermelho e laranja intensos","Amarelo neon e rosa"],0,"O azul é frequentemente associado a confiança, segurança e tecnologia."],
+    ["TIPOGRAFIA","Qual princípio ajuda a tornar um texto mais fácil de ler?",["Usar várias fontes decorativas","Manter contraste e hierarquia tipográfica","Diminuir bastante o tamanho do texto"],1,"Contraste, tamanho, espaçamento e hierarquia ajudam na legibilidade."],
+    ["USABILIDADE","Um botão importante está escondido e não parece clicável. Qual princípio precisa ser revisto?",["Clareza e affordance","Aumentar a quantidade de elementos","Remover todo o espaço em branco"],0,"Uma interface deve indicar claramente o que pode ser acionado."],
+    ["COMPOSIÇÃO","Para criar uma interface organizada, qual prática é mais adequada?",["Alinhar elementos e usar espaçamento consistente","Colocar cada elemento em posição aleatória","Usar o máximo de cores possível"],0,"Alinhamento e espaçamento consistente criam estrutura."],
+    ["ACESSIBILIDADE","Qual atitude contribui para uma interface mais acessível?",["Usar texto com pouco contraste","Depender apenas de cores","Considerar contraste, tamanho, foco e diferentes formas de interação"],2,"Acessibilidade considera diferentes necessidades e formas de interação."]
+  ];
+  const fb=document.getElementById("qFeedback");let qi=0,score=0,answered=false;const qnum=document.getElementById("qNumber"),qcat=document.getElementById("qCategory"),question=document.getElementById("question"),answers=document.getElementById("answers"),next=document.getElementById("next"),qbar=document.getElementById("qbar"),scoreEl=document.getElementById("score");
+  function renderQ(){const x=qs[qi];answered=false;next.disabled=true;next.textContent=qi===qs.length-1?"Ver resultado →":"Próxima →";qnum.textContent=`${String(qi+1).padStart(2,"0")} / 05`;qcat.textContent=x[0];question.textContent=x[1];qbar.style.width=`${(qi+1)/5*100}%`;scoreEl.textContent=`${score} ponto${score===1?"":"s"}`;answers.innerHTML="";fb.textContent="";x[2].forEach((a,i)=>{const b=document.createElement("button");b.className="answer";b.textContent=a;b.onclick=()=>select(i,b);answers.appendChild(b)})}
+  function select(i,btn){if(answered)return;answered=true;const x=qs[qi];document.querySelectorAll(".answer").forEach(b=>b.disabled=true);if(i===x[3]){score++;btn.classList.add("correct")}else{btn.classList.add("wrong");document.querySelectorAll(".answer")[x[3]].classList.add("correct")}next.disabled=false;fb.textContent=(i===x[3]?"Correto! ":"Quase! ")+x[4]}
+  next.onclick=()=>{if(qi<4){qi++;renderQ()}else{document.getElementById("quiz").classList.add("hidden");document.getElementById("quizResult").classList.remove("hidden");document.getElementById("finalScore").textContent=`${score}/5 pontos`;document.getElementById("finalText").textContent=score===5?"Excelente! Você demonstrou domínio dos principais fundamentos.":score>=3?"Muito bom! Você já domina vários fundamentos.":"Continue estudando!"}};
+  document.getElementById("restart").onclick=()=>{qi=0;score=0;document.getElementById("quiz").classList.remove("hidden");document.getElementById("quizResult").classList.add("hidden");renderQ()};renderQ();
+});
+  </script>
+  <script>
+/* =========================================================
+   PIXEL — robô companheiro (boas-vindas, dicas, tour, reações)
+   ========================================================= */
+(function () {
+  "use strict";
+  const $ = id => document.getElementById(id);
+  const root = $("pixel");
+  if (!root) return;
+
+  const btn = $("pixelBtn"), bubble = $("pixelBubble"), textEl = $("pixelText"),
+        actionsEl = $("pixelActions"), closeBtn = $("pixelClose"),
+        form = $("pixelNameForm"), nameInput = $("pixelName"),
+        eyes = root.querySelector(".px-eyes");
+
+  const mqReduce = matchMedia("(prefers-reduced-motion: reduce)");
+  const canHover = matchMedia("(hover: hover) and (pointer: fine)").matches;
+  const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
+  const store = {
+    get(k) { try { return localStorage.getItem(k); } catch (e) { return null; } },
+    set(k, v) { try { localStorage.setItem(k, v); } catch (e) {} }
+  };
+
+  let name = (store.get("pixel-name") || "").slice(0, 20);
+  let muted = store.get("pixel-muted") === "1";
+  let follow = false, sticky = false, ready = false, tourIdx = -1, lastAuto = 0;
+  let hideT = 0, talkT = 0, actT = 0, idleT = 0, waveT = 0;
+  let mx = innerWidth / 2, my = innerHeight / 2;
+  let tx = 0, ty = 0, px = 0, py = 0, hoverRobot = false;
+  const tipsSeen = new Set();
+
+  /* ---------- estados visuais ---------- */
+  const setMood = m => { root.dataset.mood = m || "happy"; };
+  function act(a, ms) {
+    clearTimeout(actT);
+    root.dataset.act = a;
+    actT = setTimeout(() => { root.dataset.act = ""; }, ms);
+  }
+  function wave() {
+    root.classList.add("wave");
+    clearTimeout(waveT);
+    waveT = setTimeout(() => root.classList.remove("wave"), 2600);
+  }
+  function talk(len) {
+    root.classList.add("talking");
+    clearTimeout(talkT);
+    talkT = setTimeout(() => root.classList.remove("talking"), Math.min(2600, 300 + len * 28));
+  }
+  function wake() {
+    clearTimeout(idleT);
+    root.classList.remove("sleepy");
+    idleT = setTimeout(() => { if (bubble.hidden) root.classList.add("sleepy"); }, 50000);
+  }
+
+  /* ---------- balão de fala ---------- */
+  function updateFlip() {
+    if (!follow) { root.classList.remove("flip-x", "flip-y"); return; }
+    const r = btn.getBoundingClientRect();
+    const bh = bubble.hidden ? 0 : bubble.offsetHeight + 20;
+    root.classList.toggle("flip-x", r.right < 330);
+    root.classList.toggle("flip-y", r.top < bh + 8);
+  }
+  function hide() {
+    clearTimeout(hideT);
+    sticky = false;
+    tourIdx = -1;
+    bubble.hidden = true;
+    form.hidden = true;
+    btn.setAttribute("aria-expanded", "false");
+    setMood("happy");
+    updateFlip();
+  }
+  function say(msg, opts) {
+    opts = opts || {};
+    clearTimeout(hideT);
+    wake();
+    textEl.textContent = msg;
+    actionsEl.innerHTML = "";
+    (opts.actions || []).forEach(a => {
+      const b = document.createElement("button");
+      b.type = "button";
+      b.className = "pixel-btn" + (a.primary ? " primary" : "");
+      b.textContent = a.label;
+      b.addEventListener("click", ev => { ev.stopPropagation(); a.run(); });
+      actionsEl.appendChild(b);
+    });
+    form.hidden = !opts.askName;
+    sticky = !!opts.sticky;
+    setMood(opts.mood || "happy");
+    bubble.hidden = false;
+    btn.setAttribute("aria-expanded", "true");
+    bubble.style.animation = "none"; void bubble.offsetWidth; bubble.style.animation = "";
+    talk(msg.length);
+    if (opts.jump !== false && !mqReduce.matches) act("jump", 650);
+    if (!sticky) hideT = setTimeout(hide, Math.max(4800, msg.length * 62));
+    updateFlip();
+  }
+  // mensagens automáticas: respeitam "silenciar", pausa mínima e balões abertos
+  function auto(msg, opts) {
+    if (!ready || muted || sticky) return false;
+    const now = Date.now();
+    if (now - lastAuto < 5000) return false;
+    lastAuto = now;
+    say(msg, opts);
+    return true;
+  }
+  // reações a conquistas do usuário: só respeitam "silenciar"
+  function react(msg, opts) { if (ready && !muted) say(msg, opts); }
+
+  /* ---------- conteúdo ---------- */
+  const tips = [
+    "Contraste importa: para texto normal, busque pelo menos 4,5:1 entre texto e fundo (recomendação WCAG).",
+    "Hierarquia visual: se tudo grita, nada se destaca. Escolha o que é mais importante e dê peso a isso.",
+    "Espaço em branco não é desperdício. Ele dá respiro e facilita a leitura.",
+    "Não dependa só da cor para comunicar algo. Some ícone, texto ou padrão, pensando em quem tem daltonismo.",
+    "Mobile first: comece pelo essencial na tela pequena e depois expanda para telas maiores.",
+    "Consistência reduz esforço: elementos parecidos devem se comportar de forma parecida.",
+    "Botões precisam parecer clicáveis. Essa pista visual se chama affordance.",
+    "Em textos longos, linhas com 50 a 75 caracteres costumam ser confortáveis de ler.",
+    "No celular, alvos de toque com cerca de 44 px evitam cliques errados.",
+    "Teste com pessoas reais cedo: poucos testes já revelam a maioria dos problemas mais evidentes.",
+    "Duas famílias tipográficas bem escolhidas costumam bastar para um projeto inteiro.",
+    "Dê feedback imediato: quando a pessoa clica, a interface deve mostrar que algo aconteceu."
+  ];
+  let tipIdx = Math.floor(Math.random() * tips.length);
+  function tip() {
+    say("Dica: " + tips[tipIdx++ % tips.length], {
+      sticky: true,
+      actions: [{ label: "Outra dica", primary: true, run: tip }, { label: "Fechar", run: hide }]
+    });
+  }
+
+  const secTips = {
+    inicio: "Design é decisão, não enfeite. Role a página para conhecer os fundamentos!",
+    design: "Aqui estão os fundamentos e as especialidades. Clique em “Saiba mais” nos cards.",
+    carreira: "Júnior, pleno ou sênior? Cada nível tem a sua seção. Clique num cartão para ir até ele!",
+    junior: "No início, o foco é aprender e dominar as ferramentas. Cada passo conta!",
+    pleno: "No nível pleno, a autonomia cresce: projetos independentes e melhoria de processos.",
+    senior: "Sênior é estratégia e liderança. Repare como o peso do histórico de projetos aumenta!",
+    cores: "Escolha duas cores e misture! Aqui a mistura é de luz (média de RGB), diferente de misturar tinta.",
+    teoria: "Clique numa cor do círculo e depois numa harmonia: eu calculo as combinações a partir dela!",
+    "playground-live": "Aqui você mexe na tipografia do site ao vivo. Arraste os adesivos também!",
+    aprender: "Marque os princípios que você checaria numa interface. Eu fico de olho no seu progresso.",
+    desafio: "Hora do desafio! São 5 perguntas. Boa sorte!"
+  };
+
+  const steps = [
+    ["inicio", "Aqui é o começo! Design não é só deixar bonito: é fazer funcionar, comunicar e melhorar a experiência."],
+    ["design", "Estes são os fundamentos e as especialidades do design, além de quatro referências de UX e usabilidade."],
+    ["carreira", "Aqui está o mapa da carreira: júnior, pleno e sênior. Cada nível tem a sua própria seção."],
+    ["junior", "Júnior: começo de carreira, foco em aprender e dominar as ferramentas."],
+    ["pleno", "Pleno: mais autonomia, projetos independentes e segurança para defender suas escolhas."],
+    ["senior", "Sênior: estratégia, liderança e decisões de alto impacto. Os salários, logo abaixo, são só ilustrativos."],
+    ["cores", "O Color Lab! Escolha duas cores e misture. Aqui a mistura é de luz (média de RGB), não de tinta."],
+    ["teoria", "Clique numa cor do círculo e depois numa harmonia: eu calculo as combinações a partir da cor escolhida."],
+    ["playground-live", "No playground você muda tamanho, peso e espaçamento do texto ao vivo, e arrasta os adesivos."],
+    ["aprender", "O checklist de um bom design. Marque o que você verificaria ao analisar uma interface."],
+    ["desafio", "E por fim o desafio: 5 perguntas para testar o que você aprendeu. Boa sorte!"]
+  ];
+  function startTour() { tourIdx = 0; tourStep(); }
+  function tourStep() {
+    const id = steps[tourIdx][0], msg = steps[tourIdx][1];
+    tipsSeen.add(id);
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: mqReduce.matches ? "auto" : "smooth", block: "start" });
+    const last = tourIdx === steps.length - 1, idx = tourIdx, acts = [];
+    if (idx > 0) acts.push({ label: "← Voltar", run: () => { tourIdx = idx - 1; tourStep(); } });
+    acts.push(last
+      ? { label: "Concluir ✓", primary: true, run: () => { hide(); say("Tour concluído! Agora é com você. Me chame sempre que quiser."); wave(); } }
+      : { label: "Próximo →", primary: true, run: () => { tourIdx = idx + 1; tourStep(); } });
+    acts.push({ label: "Sair", run: hide });
+    say("(" + (idx + 1) + "/" + steps.length + ") " + msg, { sticky: true, actions: acts, jump: false });
+    tourIdx = idx; // say() não altera, mas garante o índice atual
+  }
+
+  function dance() {
+    say("Vamos dançar!", { mood: "wow", jump: false });
+    act("dance", 3400);
+  }
+  function toggleMute() {
+    muted = !muted;
+    store.set("pixel-muted", muted ? "1" : "0");
+    say(muted ? "Ok, vou ficar quietinho. Só falo quando você me chamar." : "Dicas ligadas de novo!");
+  }
+  function askName() {
+    say(name ? "Quer mudar o nome? Digite abaixo:" : "Como posso te chamar?", {
+      sticky: true, askName: true,
+      actions: [{ label: "Cancelar", run: hide }]
+    });
+    nameInput.value = name;
+    setTimeout(() => nameInput.focus({ preventScroll: true }), 60);
+  }
+  function menu() {
+    const acts = [
+      { label: "Tour pelo site", primary: true, run: startTour },
+      { label: "Dica de design", run: tip },
+      { label: "Trocar tema", run: () => { hide(); const t = $("themeBtn"); if (t) t.click(); } },
+      { label: "Dançar", run: dance },
+      { label: muted ? "Ativar dicas" : "Silenciar dicas", run: toggleMute },
+      { label: "Meu nome", run: askName }
+    ];
+    if (canHover) acts.splice(4, 0, { label: follow ? "Voltar pro canto" : "Seguir meu mouse", run: toggleFollow });
+    acts.push({ label: "Fechar", run: hide });
+    say(name ? "Oi, " + name + "! O que vamos fazer?" : "O que vamos fazer?", { sticky: true, actions: acts, jump: false });
+  }
+  function welcome() {
+    wave();
+    if (name) {
+      say("Oi de novo, " + name + "! Que bom te ver por aqui. Quer que eu mostre o site?", {
+        sticky: true,
+        actions: [
+          { label: "Fazer o tour", primary: true, run: startTour },
+          { label: "Uma dica", run: tip },
+          { label: "Agora não", run: hide }
+        ]
+      });
+    } else {
+      say("Oi! Eu sou o Pixel. Bem-vindo(a) ao site de Design & Usabilidade! Como posso te chamar?", {
+        sticky: true, askName: true,
+        actions: [{ label: "Pular", run: () => say("Sem problemas! Clique em mim quando quiser conversar.") }]
+      });
+    }
+  }
+
+  form.addEventListener("submit", e => {
+    e.preventDefault();
+    const v = nameInput.value.trim().replace(/\s+/g, " ").slice(0, 20);
+    if (!v) { nameInput.focus(); return; }
+    name = v;
+    store.set("pixel-name", name);
+    nameInput.value = "";
+    wave();
+    say("Prazer, " + name + "! Quer um tour rápido pelo site?", {
+      sticky: true,
+      actions: [
+        { label: "Fazer o tour", primary: true, run: startTour },
+        { label: "Agora não", run: () => say("Tudo bem! Estou aqui no cantinho se precisar.") }
+      ]
+    });
+  });
+  closeBtn.addEventListener("click", hide);
+
+  /* ---------- clique no robô (e "cócegas") ---------- */
+  let clicks = [];
+  btn.addEventListener("click", () => {
+    const now = Date.now();
+    clicks = clicks.filter(t => now - t < 1400);
+    clicks.push(now);
+    if (clicks.length >= 5) {
+      clicks = [];
+      say("Hihi, cócegas!", { mood: "wow", jump: false });
+      act("dance", 1600);
+      return;
+    }
+    if (!bubble.hidden && sticky) hide(); else menu();
+  });
+  btn.addEventListener("pointerenter", () => {
+    hoverRobot = true; tx = px; ty = py;
+    if (!root.classList.contains("wave")) wave();
+  });
+  btn.addEventListener("pointerleave", () => { hoverRobot = false; });
+
+  /* ---------- olhos seguem o cursor ---------- */
+  let eyeRaf = 0;
+  function scheduleEyes() {
+    if (eyeRaf) return;
+    eyeRaf = requestAnimationFrame(() => {
+      eyeRaf = 0;
+      const r = btn.getBoundingClientRect();
+      const cx = r.left + r.width / 2, cy = r.top + r.height * 0.35;
+      const dx = mx - cx, dy = my - cy, d = Math.hypot(dx, dy) || 1, k = Math.min(1, d / 220);
+      eyes.style.setProperty("--ex", (dx / d * 3.6 * k).toFixed(2) + "px");
+      eyes.style.setProperty("--ey", (dy / d * 2.6 * k).toFixed(2) + "px");
+    });
+  }
+  addEventListener("pointermove", e => {
+    mx = e.clientX; my = e.clientY;
+    if (follow && !hoverRobot) {
+      tx = clamp(mx + 26, 8, innerWidth - btn.offsetWidth - 8);
+      ty = clamp(my + 20, 8, innerHeight - btn.offsetHeight - 8);
+    }
+    wake(); scheduleEyes();
+  }, { passive: true });
+
+  /* ---------- acompanha a rolagem com um "balanço" ---------- */
+  let lastY = scrollY, off = 0, cur = 0, springRaf = 0;
+  function spring() {
+    cur += (off - cur) * 0.2;
+    off *= 0.88;
+    btn.style.transform = "translateY(" + cur.toFixed(1) + "px) rotate(" + (cur * 0.35).toFixed(1) + "deg)";
+    if (Math.abs(cur) > 0.08 || Math.abs(off) > 0.08) springRaf = requestAnimationFrame(spring);
+    else { springRaf = 0; cur = off = 0; btn.style.transform = ""; }
+  }
+  addEventListener("scroll", () => {
+    wake();
+    const d = scrollY - lastY; lastY = scrollY;
+    if (follow || mqReduce.matches) return;
+    off = clamp(off - d * 0.9, -34, 34);
+    if (!springRaf) springRaf = requestAnimationFrame(spring);
+    if (Math.abs(d) > 2) {
+      eyes.style.setProperty("--ex", "0px");
+      eyes.style.setProperty("--ey", (d > 0 ? 2.6 : -2.6) + "px");
+    }
+  }, { passive: true });
+
+  /* ---------- modo "seguir meu mouse" (opcional, só com mouse) ---------- */
+  function followLoop() {
+    if (!follow) return;
+    px += (tx - px) * 0.12;
+    py += (ty - py) * 0.12;
+    root.style.transform = "translate3d(" + px.toFixed(1) + "px," + py.toFixed(1) + "px,0)";
+    btn.style.transform = "rotate(" + clamp((tx - px) * 0.08, -14, 14).toFixed(1) + "deg)";
+    updateFlip();
+    requestAnimationFrame(followLoop);
+  }
+  function startFollow() {
+    const r = btn.getBoundingClientRect();
+    px = tx = r.left; py = ty = r.top;
+    follow = true;
+    root.classList.add("following");
+    root.style.transform = "translate3d(" + px + "px," + py + "px,0)";
+    say("Agora eu sigo seu mouse! Aperte Esc para eu voltar pro meu cantinho.", { mood: "wow" });
+    requestAnimationFrame(followLoop);
+  }
+  function stopFollow(announce) {
+    follow = false;
+    root.classList.remove("following", "flip-x", "flip-y");
+    root.style.transform = "";
+    btn.style.transform = "";
+    if (announce) say("De volta pro meu cantinho!");
+  }
+  function toggleFollow() { if (follow) stopFollow(true); else startFollow(); }
+
+  addEventListener("keydown", e => {
+    if (e.key !== "Escape") return;
+    if (follow) stopFollow(true);
+    else if (!bubble.hidden) hide();
+  });
+
+  /* ---------- dicas ao entrar em cada seção ---------- */
+  if ("IntersectionObserver" in window) {
+    const timers = {};
+    const io = new IntersectionObserver(entries => entries.forEach(en => {
+      const id = en.target.id;
+      clearTimeout(timers[id]);
+      if (en.isIntersecting && !tipsSeen.has(id) && secTips[id]) {
+        timers[id] = setTimeout(() => {
+          if (tourIdx >= 0 || tipsSeen.has(id)) return;
+          if (auto(secTips[id])) tipsSeen.add(id);
+        }, 1600);
+      }
+    }), { rootMargin: "-35% 0px -45% 0px", threshold: 0 });
+    Object.keys(secTips).forEach(id => { const el = document.getElementById(id); if (el) io.observe(el); });
+  }
+
+  /* ---------- reações ao que a pessoa faz no site ---------- */
+  new MutationObserver(() => {
+    const dark = document.documentElement.dataset.theme === "dark";
+    auto(dark ? "Modo escuro ativado! Meus olhinhos agradecem." : "Tema claro de volta! Bem brilhante.", { mood: "wow" });
+  }).observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
+
+  const qr = $("quizResult");
+  if (qr) new MutationObserver(() => {
+    if (qr.classList.contains("hidden")) return;
+    const n = parseInt($("finalScore").textContent, 10) || 0;
+    if (n === 5) { react("Gabaritou! Você pensa como designer!", { mood: "wow", jump: false }); act("dance", 3200); }
+    else if (n >= 3) react("Mandou bem! Dá para chegar aos 5 pontos, quer tentar de novo?");
+    else react("Boa tentativa! Refaça o desafio e veja como melhora.");
+  }).observe(qr, { attributes: true, attributeFilter: ["class"] });
+
+  const cc = $("checkCount");
+  if (cc) new MutationObserver(() => {
+    if (cc.textContent.trim() === "8/8") { react("Checklist completo! Seu olhar de designer está afiado.", { mood: "wow", jump: false }); act("dance", 3000); }
+  }).observe(cc, { childList: true, characterData: true, subtree: true });
+
+  const mixBtn = $("mixBtn");
+  if (mixBtn) mixBtn.addEventListener("click", () => setTimeout(() => {
+    auto("Que mistura! Deu " + $("resultName").textContent + " (" + $("resultHex").textContent + ").");
+  }, 80));
+  const genBtn = $("generatePalettes");
+  if (genBtn) genBtn.addEventListener("click", () => auto("Paletas novas! Qual combina com o seu projeto?"));
+  const egg = $("easterEggTrigger");
+  if (egg) egg.addEventListener("click", () => {
+    say("Você me achou! Segredo: eu adoro dançar.", { mood: "wow", jump: false });
+    act("dance", 3200);
+  });
+
+  /* ---------- piscar e iniciar ---------- */
+  function blink() {
+    root.classList.add("blink");
+    setTimeout(() => root.classList.remove("blink"), 140);
+    setTimeout(blink, 2500 + Math.random() * 3500);
+  }
+  function start() {
+    root.hidden = false;
+    root.classList.add("enter");
+    setTimeout(() => root.classList.remove("enter"), 1200);
+    blink(); wake(); scheduleEyes();
+    setTimeout(() => { ready = true; tipsSeen.add("inicio"); welcome(); }, 1000);
+  }
+  if (document.readyState === "complete") setTimeout(start, 500);
+  else addEventListener("load", () => setTimeout(start, 500));
+})();
+
+  </script>
+</body>
+</html>
