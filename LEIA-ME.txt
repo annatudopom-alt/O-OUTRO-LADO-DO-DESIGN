@@ -1,0 +1,24 @@
+O OUTRO LADO DO DESIGN — PACOTE OFFLINE PARA GITHUB PAGES
+
+Conteúdo:
+- index.html: seu site original, com link para o manifest e registro do Service Worker.
+- manifest.webmanifest: configuração para instalação como app.
+- service-worker.js: cache offline das páginas e recursos locais visitados.
+- icons/: ícones locais da coroa para instalação.
+
+COMO PUBLICAR:
+1. Extraia este ZIP.
+2. Envie TODOS os arquivos e a pasta icons para a raiz da branch/pasta que o GitHub Pages publica.
+3. O arquivo principal deve chamar-se index.html.
+4. Em Settings > Pages, confirme a branch e a pasta de publicação.
+5. Abra a URL HTTPS do GitHub Pages no Chrome do tablet Android com internet.
+6. Espere carregar e visite as seções/recursos que deseja usar offline.
+7. No Chrome, abra o menu ⋮ e escolha Instalar app ou Adicionar à tela inicial.
+8. Ative o modo avião e teste.
+
+OBSERVAÇÕES:
+- O site precisa ser aberto pela URL HTTPS do GitHub Pages para o Service Worker funcionar.
+- O cache armazena arquivos do próprio site quando são acessados. Visite as seções antes de ficar offline.
+- Fontes do Google e outros recursos externos podem não estar disponíveis offline. Para garantir a aparência idêntica, seria necessário baixar as fontes e trocar as referências externas por arquivos locais.
+- Recursos que dependem de APIs/servidores externos, incluindo IA online, não funcionam sem internet.
+- Após alterar o site, publique a nova versão e abra-o com internet para atualizar o cache.
